@@ -1,0 +1,19 @@
+# Node.js (Next.js)
+Frontend/node_modules/
+Frontend/.next/
+Frontend/.env*
+Frontend/.turbo/
+
+# Python (FastAPI)
+__pycache__/
+Backend/.env
+Backend/venv/
+*.pyc
+
+# Editor/system files
+.DS_Store
+.env
+*.log
+
+# Development
+/Devnotes
