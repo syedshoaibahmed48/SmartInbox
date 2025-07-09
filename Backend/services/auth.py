@@ -15,7 +15,7 @@ def create_sso_url(email: str, provider: str) -> str:
     base_url = Email_Providers[provider]["sso_url"]
     
     if provider == "google":
-        base_url += f"?client_id={os.getenv("GOOGLE_CLIENT_ID")}&redirect_uri={os.getenv("POST_SSO_REDIRECT_URL")}&response_type=code&scope=https://www.googleapis.com/auth/gmail.readonly&login_hint={email}"
+        base_url += f"?client_id={os.getenv('GOOGLE_CLIENT_ID')}&redirect_uri={os.getenv('POST_SSO_REDIRECT_URL')}&response_type=code&scope=https://www.googleapis.com/auth/gmail.readonly&login_hint={email}"
 
     return base_url
 
