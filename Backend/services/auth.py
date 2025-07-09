@@ -16,6 +16,8 @@ def create_sso_url(email: str, provider: str) -> str:
     
     if provider == "google":
         base_url += f"?client_id={os.getenv('GOOGLE_CLIENT_ID')}&redirect_uri={os.getenv('POST_SSO_REDIRECT_URL')}&response_type=code&scope=https://www.googleapis.com/auth/gmail.readonly&login_hint={email}"
+    elif provider == "microsoft":
+        base_url += f"?client_id={os.getenv('MICROSOFT_CLIENT_ID')}&redirect_uri={os.getenv('POST_SSO_REDIRECT_URL')}&response_type=code&scope=https://graph.microsoft.com/Mail.Read&login_hint={email}"
 
     return base_url
 
