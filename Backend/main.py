@@ -6,7 +6,7 @@ from fastapi.responses import JSONResponse
 
 from api.auth import router as auth_router
 
-from errors import http_exception_handler, validation_exception_handler
+from core.errors import http_exception_handler, validation_exception_handler
 
 app = FastAPI()
 

@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException, Request
 from pydantic import EmailStr
-from services.auth import get_sso_url, is_valid_email
+from services.oauth_flow import get_sso_url, is_valid_email
 
 router = APIRouter()
 
