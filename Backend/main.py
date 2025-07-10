@@ -1,4 +1,5 @@
 import os
+from dotenv import load_dotenv
 from fastapi import FastAPI, HTTPException
 from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
@@ -8,19 +9,16 @@ from api.auth import router as auth_router
 
 from core.errors import http_exception_handler, validation_exception_handler
 
+load_dotenv()
+
 app = FastAPI()
 
-# Development-only
-SWAGGER_WHITELIST = [
-    "/docs",
-    "/redoc",
-    "/openapi.json"
-]
+FRONTEND_URL = os.getenv("FRONTEND_URL", "http://localhost:3000")
 
 # Allow requests from frontend 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],  # Next.js app URL
+    allow_origins=[FRONTEND_URL],  # Next.js app URL from .env
     allow_credentials=True,
     allow_methods=["GET", "POST"],
     allow_headers=["Authorization", "Content-Type"],
@@ -32,9 +30,9 @@ API_KEY = os.getenv("API_KEY")
 @app.middleware("http")
 async def api_key_middleware(request, call_next):
 
-    # Development-only: Uncomment the following lines to enable API key checking
-    # if request.headers.get("Authorization") != f"Bearer {API_KEY}":
-    #     return JSONResponse(status_code=401, content={"error": "Unauthorized: Invalid or missing API key."})
+    # API key check
+    if request.headers.get("Authorization") != f"Bearer {API_KEY}":
+        return JSONResponse(status_code=401, content={"error": "Unauthorized: Invalid or missing API key."})
 
     response = await call_next(request)
     return response

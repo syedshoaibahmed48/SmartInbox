@@ -22,7 +22,7 @@ def create_sso_url(email: str, provider: str) -> str:
 
     params = {
         "client_id": os.getenv(f"{provider.upper()}_CLIENT_ID"),
-        "redirect_uri": os.getenv("POST_SSO_REDIRECT_URL"),
+        "redirect_uri": f"{os.getenv('FRONTEND_URL')}/auth/callback",
         "response_type": "code",
         "scope": config["scope"],
         "login_hint": email
