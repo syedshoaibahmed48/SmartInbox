@@ -18,6 +18,6 @@ export async function POST(request) {
     const data = await backendRes.json()
     return NextResponse.json({ url: data.sso_url })
   } catch (e) {
-    return NextResponse.json({ error: "Internal server error: " }, { status: 500 })
+    return NextResponse.json({ error: "Internal Server Error, please try again later." }, { status: 500 })
   }
 }
