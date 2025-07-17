@@ -13,6 +13,8 @@ export async function POST(request) {
     })
     if (!backendRes.ok) {
       const err = await backendRes.json()
+      // if unauthorized, return 401 and server error message
+      if (backendRes.status === 401) return NextResponse.json({ error: "Internal Server Error, please try again later." }, { status: 401 })
       return NextResponse.json({ error: "Please enter a valid email address." }, { status: backendRes.status })
     }
     const data = await backendRes.json()
