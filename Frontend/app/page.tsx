@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { fetchFromProxy } from "@/lib/apiClient"
+import { apiClient } from "@/lib/apiClient"
 import { Mail, ChevronRight } from "lucide-react"
 import { useState } from "react"
 import { Toaster, toast } from 'sonner'
@@ -20,7 +20,7 @@ export default function SmartInboxSplitLanding() {
     if (!isEmailValid) return;
     // Call the SSO API
     try {
-      const response  = await fetchFromProxy(`/api/sso?email=${encodeURIComponent(email)}`, {
+      const response  = await apiClient(`/api/auth/sso?email=${encodeURIComponent(email)}`, {
         method: "POST",
       });
       if (response.redirectUrl) {
@@ -28,7 +28,6 @@ export default function SmartInboxSplitLanding() {
         window.location.href = response.redirectUrl;
       }
     } catch (err) {
-      console.error("Error during SSO:", err);
       toast.error("Failed to initiate sign-in. Please try again.");
     }
   };

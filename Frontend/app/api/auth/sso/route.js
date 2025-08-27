@@ -13,13 +13,15 @@ export async function POST(request) {
     })
     if (!backendRes.ok) {
       const err = await backendRes.json()
-      // if unauthorized, return 401 and server error message
-      if (backendRes.status === 401) return NextResponse.json({ error: "Internal Server Error, please try again later." }, { status: 401 })
+      console.log("SSO Error:", err)
+      // if unauthorized, return 401
+      if (backendRes.status === 401) return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
       return NextResponse.json({ error: "Please enter a valid email address." }, { status: backendRes.status })
     }
     const data = await backendRes.json()
     return NextResponse.json({ url: data.sso_url })
   } catch (e) {
+    //console.error("SSO Exception:", e)
     return NextResponse.json({ error: "Internal Server Error, please try again later." }, { status: 500 })
   }
 }
