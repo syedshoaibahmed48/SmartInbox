@@ -4,7 +4,7 @@ from services.oauth_flow import get_sso_url, is_valid_email
 
 router = APIRouter()
 
-@router.post("/sso")
+@router.get("/sso")
 async def return_sso_url(email: EmailStr):
 
     if not is_valid_email(email):

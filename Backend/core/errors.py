@@ -11,7 +11,7 @@ async def validation_exception_handler(request: Request, exc: RequestValidationE
         if field == "email":
             return JSONResponse(
                 status_code=400,
-                content={"error": "Invalid email address"},
+                content={"message": "Invalid email address"},
             )
 
     # Generic fallback if not email-related
@@ -20,9 +20,9 @@ async def validation_exception_handler(request: Request, exc: RequestValidationE
         content={"message": "Validation failed", "details": exc.errors()},
     )
 
-#Handles FastAPI-raised HTTPExceptions and formats with "error" key
+#Handles FastAPI-raised HTTPExceptions and formats with "message" key
 async def http_exception_handler(request: Request, exc: HTTPException):
     return JSONResponse(
         status_code=exc.status_code,
-        content={"error": exc.detail},
+        content={"message": exc.detail},
     )

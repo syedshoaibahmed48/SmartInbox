@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { apiClient } from "@/lib/apiClient"
+import { ApiClientError } from "@/lib/types"
 import { Mail, ChevronRight } from "lucide-react"
 import { useState } from "react"
 import { Toaster, toast } from 'sonner'
@@ -18,17 +19,16 @@ export default function SmartInboxSplitLanding() {
   // Handler for continue button or enter key
   const handleContinue = async () => {
     if (!isEmailValid) return;
-    // Call the SSO API
     try {
-      const response  = await apiClient(`/api/auth/sso?email=${encodeURIComponent(email)}`, {
-        method: "POST",
+      const response = await apiClient(`/api/auth/sso?email=${encodeURIComponent(email)}`, {
+        method: "GET",
       });
-      if (response.redirectUrl) {
-        // Redirect to the SSO URL
-        window.location.href = response.redirectUrl;
+      if (response.ssoUrl) {
+        window.location.href = response.ssoUrl;
       }
-    } catch (err) {
-      toast.error("Failed to initiate sign-in. Please try again.");
+    } catch (error) {
+      const err = error as ApiClientError;
+      toast.error(err.message || "An unexpected error occurred.");
     }
   };
 

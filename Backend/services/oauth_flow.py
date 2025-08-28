@@ -45,11 +45,11 @@ def get_sso_url(email: str) -> str:
         mx_records = resolver.resolve(domain, 'MX')
         mx_hosts = [str(record.exchange) for record in mx_records]
     except resolver.NXDOMAIN:
-        raise HTTPException(status_code=400, detail=f"Domain does not exist")
+        raise HTTPException(status_code=400, detail=f"The email address you entered doesn’t appear to exist. Please check for typos.")
     except resolver.NoAnswer:
-         raise HTTPException(status_code=400, detail="Domain has no MX records (can't receive email)")
+         raise HTTPException(status_code=400, detail="The email domain you entered cannot receive emails. Please use a valid email address.")
     except Exception as e:
-        mx_hosts = []
+        raise HTTPException(status_code=400, detail="We couldn’t verify this email address at the moment. Please try again later.")
 
     # Check if any MX host matches known patterns
     for host in mx_hosts:
