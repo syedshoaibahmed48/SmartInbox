@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 from fastapi import HTTPException
 from data.email_providers import Email_Providers
 from urllib.parse import urlencode
+import requests
 
 load_dotenv()
 
@@ -59,3 +60,32 @@ def get_sso_url(email: str) -> str:
                 return create_sso_url(email, provider)
 
     return "unknown"
+
+
+def get_access_refresh_tokens(provider: str, code: str):
+
+    if provider not in Email_Providers:
+        raise ValueError(f"Unsupported provider: {provider}")
+    
+    token_url = Email_Providers[provider].get("token_url")
+    if not token_url:   
+        raise ValueError(f"Token URL not configured for provider: {provider}")
+
+    data = {
+        "client_id": os.getenv(f"{provider.upper()}_CLIENT_ID"),
+        "client_secret": os.getenv(f"{provider.upper()}_CLIENT_SECRET"),
+        "code": code,
+        "redirect_uri": f"{os.getenv('FRONTEND_URL')}/auth/callback",
+        "grant_type": "authorization_code"
+    }
+
+    headers = {
+        "Content-Type": "application/x-www-form-urlencoded"
+    }
+
+    response = requests.post(token_url, data=data, headers=headers)
+    
+    if response.status_code != 200:
+        raise HTTPException(status_code=400, detail="Failed to exchange code for tokens")
+
+    return response.json()

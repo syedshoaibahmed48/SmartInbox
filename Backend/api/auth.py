@@ -17,3 +17,17 @@ async def return_sso_url(email: EmailStr):
         raise HTTPException(status_code=400, detail="Unsupported email provider, the app currently supports Google and Microsoft accounts only.")
     
     return {"sso_url": sso_url}
+
+@router.post("/exchange")
+async def exchange_code(request: Request):
+    data = await request.json()
+    code = data.get("code")
+    provider = data.get("provider")
+
+    if not code or not provider:
+        raise HTTPException(status_code=400, detail="Missing code or provider")
+    
+    # Exchange code for tokens and return session ID
+    # return sid
+    
+
