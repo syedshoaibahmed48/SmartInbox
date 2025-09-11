@@ -5,6 +5,7 @@ from fastapi import HTTPException
 from data.email_providers import Email_Providers
 from urllib.parse import urlencode
 import requests
+import uuid
 
 load_dotenv()
 
@@ -23,7 +24,7 @@ def create_sso_url(email: str, provider: str) -> str:
 
     params = {
         "client_id": os.getenv(f"{provider.upper()}_CLIENT_ID"),
-        "redirect_uri": f"{os.getenv('FRONTEND_URL')}/auth/callback",
+        "redirect_uri": f"{os.getenv('FRONTEND_URL')}/auth/{provider}/callback",
         "response_type": "code",
         "scope": config["scope"],
         "login_hint": email
@@ -71,21 +72,19 @@ def get_access_refresh_tokens(provider: str, code: str):
     if not token_url:   
         raise ValueError(f"Token URL not configured for provider: {provider}")
 
-    data = {
-        "client_id": os.getenv(f"{provider.upper()}_CLIENT_ID"),
-        "client_secret": os.getenv(f"{provider.upper()}_CLIENT_SECRET"),
-        "code": code,
-        "redirect_uri": f"{os.getenv('FRONTEND_URL')}/auth/callback",
-        "grant_type": "authorization_code"
-    }
+    data = Email_Providers[provider]["token_params"](code)
 
     headers = {
         "Content-Type": "application/x-www-form-urlencoded"
     }
 
-    response = requests.post(token_url, data=data, headers=headers)
+    response = requests.post(token_url, data=urlencode(data), headers=headers)
     
     if response.status_code != 200:
         raise HTTPException(status_code=400, detail="Failed to exchange code for tokens")
+    
+    tokens = response.json()
 
-    return response.json()
+    print(tokens)
+
+    return tokens

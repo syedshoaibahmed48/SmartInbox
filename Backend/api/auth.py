@@ -1,6 +1,7 @@
+import uuid
 from fastapi import APIRouter, HTTPException, Request
 from pydantic import EmailStr
-from services.oauth_flow import get_sso_url, is_valid_email
+from services.oauth_flow import get_access_refresh_tokens, get_sso_url, is_valid_email
 
 router = APIRouter()
 
@@ -18,7 +19,7 @@ async def return_sso_url(email: EmailStr):
     
     return {"sso_url": sso_url}
 
-@router.post("/exchange")
+@router.post("/token")
 async def exchange_code(request: Request):
     data = await request.json()
     code = data.get("code")
@@ -27,7 +28,11 @@ async def exchange_code(request: Request):
     if not code or not provider:
         raise HTTPException(status_code=400, detail="Missing code or provider")
     
-    # Exchange code for tokens and return session ID
-    # return sid
-    
+    tokens = get_access_refresh_tokens(provider, code)
+
+    sid = str(uuid.uuid4())  # Generate a unique session ID
+
+    # TODO: Store tokens securely associated with the session ID
+
+    return {"sid": sid}
 
