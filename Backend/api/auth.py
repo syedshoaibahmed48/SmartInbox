@@ -10,9 +10,8 @@ async def return_sso_url(email: EmailStr):
 
     if not is_valid_email(email):
         raise HTTPException(status_code=400, detail="Invalid email format")
-    
-    # Get SSO URL based on email provider
-    # Currently supports Google and Microsoft accounts only
+
+    # Get SSO URL based on email provider (Currently supports Google and Microsoft accounts only)
     sso_url = get_sso_url(email)
     if sso_url == "unknown":
         raise HTTPException(status_code=400, detail="Unsupported email provider, the app currently supports Google and Microsoft accounts only.")
@@ -30,9 +29,11 @@ async def exchange_code(request: Request):
     
     tokens = get_access_refresh_tokens(provider, code)
 
+    if not tokens:
+        raise HTTPException(status_code=400, detail="Failed to retrieve tokens from provider")
+
     sid = str(uuid.uuid4())  # Generate a unique session ID
 
     # TODO: Store tokens securely associated with the session ID
 
     return {"sid": sid}
-

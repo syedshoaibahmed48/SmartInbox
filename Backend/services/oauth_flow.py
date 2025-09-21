@@ -1,4 +1,5 @@
 import os
+import time
 from dns import resolver
 from dotenv import load_dotenv
 from fastapi import HTTPException
@@ -22,13 +23,19 @@ def create_sso_url(email: str, provider: str) -> str:
     if not config:
         raise ValueError(f"Unsupported provider: {provider}")
 
+    # Base parameters
     params = {
         "client_id": os.getenv(f"{provider.upper()}_CLIENT_ID"),
         "redirect_uri": f"{os.getenv('FRONTEND_URL')}/auth/{provider}/callback",
         "response_type": "code",
-        "scope": config["scope"],
+        "scope": config["token_request_payload"](None)["scope"],
         "login_hint": email
     }
+
+    # Additional parameters
+    if "access_type" in config["token_request_payload"](None):
+        print("Adding access_type")
+        params["access_type"] = config["token_request_payload"](None)["access_type"]
 
     return f"{config['sso_url']}?{urlencode(params)}"
 
@@ -72,19 +79,20 @@ def get_access_refresh_tokens(provider: str, code: str):
     if not token_url:   
         raise ValueError(f"Token URL not configured for provider: {provider}")
 
-    data = Email_Providers[provider]["token_params"](code)
+    data = Email_Providers[provider]["token_request_payload"](code)
 
     headers = {
         "Content-Type": "application/x-www-form-urlencoded"
     }
 
-    response = requests.post(token_url, data=urlencode(data), headers=headers)
-    
-    if response.status_code != 200:
-        raise HTTPException(status_code=400, detail="Failed to exchange code for tokens")
-    
-    tokens = response.json()
-
-    print(tokens)
-
-    return tokens
+    try:
+        response = requests.post(token_url, data=urlencode(data), headers=headers)
+        token_details = response.json()
+        return {
+            "provider": provider,
+            "access_token": token_details.get("access_token"),
+            "refresh_token": token_details.get("refresh_token"),
+            "expiry_time": int(time.time()) + token_details.get("expires_in")
+        }
+    except requests.RequestException as e:
+        return None
