@@ -1,6 +1,7 @@
 import uuid
 from fastapi import APIRouter, HTTPException, Request
 from pydantic import EmailStr
+from services.redis_client import store_session
 from services.oauth_flow import get_access_refresh_tokens, get_sso_url, is_valid_email
 
 router = APIRouter()
@@ -27,13 +28,17 @@ async def exchange_code(request: Request):
     if not code or not provider:
         raise HTTPException(status_code=400, detail="Missing code or provider")
     
-    tokens = get_access_refresh_tokens(provider, code)
+    token_details = get_access_refresh_tokens(provider, code)
 
-    if not tokens:
+    if token_details is None:
         raise HTTPException(status_code=400, detail="Failed to retrieve tokens from provider")
 
-    sid = str(uuid.uuid4())  # Generate a unique session ID
+    # Generate a unique session ID
+    sid = str(uuid.uuid4()) 
 
-    # TODO: Store tokens securely associated with the session ID
+    # Store session in Redis
+    session = store_session(sid, token_details)
+    if session is None:
+        raise HTTPException(status_code=500, detail="Failed to store session")
 
     return {"sid": sid}

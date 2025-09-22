@@ -28,16 +28,16 @@ def create_sso_url(email: str, provider: str) -> str:
         "client_id": os.getenv(f"{provider.upper()}_CLIENT_ID"),
         "redirect_uri": f"{os.getenv('FRONTEND_URL')}/auth/{provider}/callback",
         "response_type": "code",
-        "scope": config["token_request_payload"](None)["scope"],
+        "scope": config.token_request_payload(None)["scope"],
         "login_hint": email
     }
 
     # Additional parameters
-    if "access_type" in config["token_request_payload"](None):
+    if "access_type" in config.token_request_payload(None):
         print("Adding access_type")
-        params["access_type"] = config["token_request_payload"](None)["access_type"]
+        params["access_type"] = config.token_request_payload(None)["access_type"]
 
-    return f"{config['sso_url']}?{urlencode(params)}"
+    return f"{config.sso_url}?{urlencode(params)}"
 
 
 def get_sso_url(email: str) -> str:
@@ -46,7 +46,7 @@ def get_sso_url(email: str) -> str:
 
     # Check direct domain match
     for provider, info in Email_Providers.items():
-        if domain in info["domains"]:
+        if domain in info.domains:
             return create_sso_url(email, provider)
 
     # if no direct match, check MX hosts
@@ -74,12 +74,12 @@ def get_access_refresh_tokens(provider: str, code: str):
 
     if provider not in Email_Providers:
         raise ValueError(f"Unsupported provider: {provider}")
-    
-    token_url = Email_Providers[provider].get("token_url")
-    if not token_url:   
+
+    token_url = Email_Providers[provider].token_url
+    if not token_url:
         raise ValueError(f"Token URL not configured for provider: {provider}")
 
-    data = Email_Providers[provider]["token_request_payload"](code)
+    data = Email_Providers[provider].token_request_payload(code)
 
     headers = {
         "Content-Type": "application/x-www-form-urlencoded"
@@ -88,6 +88,11 @@ def get_access_refresh_tokens(provider: str, code: str):
     try:
         response = requests.post(token_url, data=urlencode(data), headers=headers)
         token_details = response.json()
+
+        print(token_details)  # Debugging line to check token details
+
+        if response.status_code != 200 or "access_token" not in token_details:
+            return None
         return {
             "provider": provider,
             "access_token": token_details.get("access_token"),

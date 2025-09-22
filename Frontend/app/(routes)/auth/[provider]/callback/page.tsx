@@ -32,27 +32,14 @@ export default function AuthCallbackPage() {
     // Simulate token exchange process
     const exchangeCodeForToken = async () => {
       try {
-        // TODO: Replace with actual API call
-        // const response = await fetch('/api/auth/exchange', {
-        //   method: 'POST',
-        //   headers: { 'Content-Type': 'application/json' },
-        //   body: JSON.stringify({ code })
-        // })
-
-        // Simulate API delay
-        await new Promise((resolve) => setTimeout(resolve, 2000))
-
-        // Simulate success (you can change this to test error state)
-        const success = true
-
-        if (success) {
+        const response = await fetch("/api/auth/token", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ code, provider: "google" }) // Assuming 'google' as provider for this example
+        })
+        if (response.ok) {
           setAuthState("success")
-          // Redirect after showing success message
-          setTimeout(() => {
-            // TODO: Replace with actual redirect
-            // window.location.href = '/dashboard'
-            console.log("Redirecting to dashboard...")
-          }, 2000)
+          // TODO: Redirect to /mails after a short delay
         } else {
           throw new Error("Token exchange failed")
         }
