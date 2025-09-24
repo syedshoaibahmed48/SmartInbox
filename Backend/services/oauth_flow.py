@@ -32,10 +32,14 @@ def create_sso_url(email: str, provider: str) -> str:
         "login_hint": email
     }
 
+
+
     # Additional parameters
-    if "access_type" in config.token_request_payload(None):
-        print("Adding access_type")
+    if config.token_request_payload(None)["access_type"] is not None:
         params["access_type"] = config.token_request_payload(None)["access_type"]
+
+    if config.token_request_payload(None)["prompt"] is not None:
+        params["prompt"] = config.token_request_payload(None)["prompt"]
 
     return f"{config.sso_url}?{urlencode(params)}"
 
@@ -86,10 +90,8 @@ def get_access_refresh_tokens(provider: str, code: str):
     }
 
     try:
-        response = requests.post(token_url, data=urlencode(data), headers=headers)
+        response = requests.post(token_url, data=data, headers=headers)
         token_details = response.json()
-
-        print(token_details)  # Debugging line to check token details
 
         if response.status_code != 200 or "access_token" not in token_details:
             return None

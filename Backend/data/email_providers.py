@@ -16,7 +16,8 @@ Email_Providers: Dict[str, EmailProviderConfig] = {
             redirect_uri=f"{os.getenv('FRONTEND_URL')}/auth/google/callback",
             grant_type="authorization_code",
             scope="https://www.googleapis.com/auth/gmail.readonly",
-            access_type="offline"
+            access_type="offline",
+            prompt="consent"
         ).model_dump()
     ),
     "microsoft": EmailProviderConfig(

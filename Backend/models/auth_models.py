@@ -15,6 +15,7 @@ class TokenRequestPayload(BaseModel):
     grant_type: str = Field(..., description="Grant type")
     scope: str = Field(..., description="OAuth scopes")
     access_type: Optional[str] = Field(None, description="Access type (if applicable)")
+    prompt: Optional[str] = Field(None, description="Prompt (if applicable)")
 
 class EmailProviderConfig(BaseModel):
     domains: List[str] = Field(..., description="Supported email domains")
