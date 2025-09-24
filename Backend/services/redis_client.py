@@ -15,6 +15,7 @@ try:
 except redis.ConnectionError as e:
     print(f"Error connecting to Redis: {e}")
     r = None
+    raise e
 
 def store_session(sid: str, token_details: TokenDetails):
     if r is None:

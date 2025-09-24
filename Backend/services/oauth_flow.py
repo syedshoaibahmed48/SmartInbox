@@ -91,7 +91,7 @@ def get_access_refresh_tokens(provider: str, code: str):
 
     try:
         response = requests.post(token_url, data=data, headers=headers)
-        token_details = response.json()
+        token_details = response.json()  
 
         if response.status_code != 200 or "access_token" not in token_details:
             return None

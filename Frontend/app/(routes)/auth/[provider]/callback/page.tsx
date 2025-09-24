@@ -1,20 +1,40 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { use, useEffect, useState } from "react"
 import { useSearchParams } from "next/navigation"
 import { Mail, CheckCircle, XCircle, Loader2 } from "lucide-react"
 
 type AuthState = "loading" | "success" | "error"
 
-export default function AuthCallbackPage() {
+export default function AuthCallbackPage({ params }: { params: Promise<{ provider: string }> }) {
   const [authState, setAuthState] = useState<AuthState>("loading")
   const [errorMessage, setErrorMessage] = useState("")
   const searchParams = useSearchParams()
+  const { provider } = use(params)
+
+  const exchangeCodeForToken = async (code: string, provider: string) => {
+    try {
+      const response = await fetch("/api/auth/token", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ code, provider })
+      })
+      if (response.ok) {
+        setAuthState("success")
+        // TODO: Redirect to /mails after a short delay
+      } else {
+        throw new Error("Token exchange failed")
+      }
+    } catch (error) {
+      setAuthState("error")
+      setErrorMessage("Something went wrong during login. Please try again.")
+    }
+  }
 
   useEffect(() => {
     const code = searchParams.get("code")
     const error = searchParams.get("error")
-
+  
     // If there's an error parameter, show error immediately
     if (error) {
       setAuthState("error")
@@ -29,28 +49,9 @@ export default function AuthCallbackPage() {
       return
     }
 
-    // Simulate token exchange process
-    const exchangeCodeForToken = async () => {
-      try {
-        const response = await fetch("/api/auth/token", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ code, provider: "google" }) // Assuming 'google' as provider for this example
-        })
-        if (response.ok) {
-          setAuthState("success")
-          // TODO: Redirect to /mails after a short delay
-        } else {
-          throw new Error("Token exchange failed")
-        }
-      } catch (error) {
-        setAuthState("error")
-        setErrorMessage("Something went wrong during login. Please try again.")
-      }
-    }
+    exchangeCodeForToken(code, provider)
 
-    exchangeCodeForToken()
-  }, [searchParams])
+  }, [])
 
   return (
     <div className="min-h-screen bg-neutral-50 flex items-center justify-center p-8">
