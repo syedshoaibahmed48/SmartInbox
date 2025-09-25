@@ -21,7 +21,9 @@ export default function AuthCallbackPage({ params }: { params: Promise<{ provide
       })
       if (response.ok) {
         setAuthState("success")
-        // TODO: Redirect to /mails after a short delay
+        setTimeout(() => {
+          window.location.href = "/mails"
+        }, 2000)
       } else {
         throw new Error("Token exchange failed")
       }

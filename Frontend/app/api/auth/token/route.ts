@@ -1,7 +1,8 @@
 import { apiClient } from "@/lib/apiClient";
+import { generateJwt } from "@/lib/authUtil";
 import { ApiClientError } from "@/lib/types";
 import { NextRequest, NextResponse } from "next/server"
-import jwt from "jsonwebtoken";
+
 
 export async function POST(request: NextRequest) {
   try {
@@ -10,8 +11,8 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Code and provider are required" }, { status: 400 })
     }
 
-    const res = await apiClient("/auth/token", { 
-      method: "POST", 
+    const res = await apiClient("/auth/token", {
+      method: "POST",
       body: JSON.stringify({ code, provider }),
       headers: { "Content-Type": "application/json" }
     }, false)
@@ -23,23 +24,17 @@ export async function POST(request: NextRequest) {
     }
 
     // Create a JWT with the session ID
-    //const token = jwt.sign(
-    //  { sub: provider, sid }, //sub is provider name only
-    //  process.env.JWT_SECRET!
-    //);
+    const token = generateJwt(sid);
 
     // Set the JWT as a cookie
-    //const response = NextResponse.json({ token }, { status: 200 });
-    //response.cookies.set("token", token, {
-    //    httpOnly: true,
-    //    secure: process.env.NODE_ENV === "production",
-    //    sameSite: "strict",
-    //    path: "/"
-    //});
-    //return response;
-
-    return NextResponse.json({ sid }, { status: 200 });
-
+    const response = NextResponse.json({ token }, { status: 200 });
+    response.cookies.set("token", token, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production",
+        sameSite: "strict",
+        path: "/"
+    });
+    return response;
   } catch (error: unknown) {
     const err = error as ApiClientError;
     return NextResponse.json(
