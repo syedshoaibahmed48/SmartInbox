@@ -38,7 +38,7 @@ async def exchange_code(request: Request):
 
     # Store session in Redis
     session = store_session(sid, token_details)
-    if session is None:
+    if not session:
         raise HTTPException(status_code=500, detail="Failed to store session")
 
     return {"sid": sid}

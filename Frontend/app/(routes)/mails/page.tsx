@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, use } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent } from "@/components/ui/card"
@@ -12,36 +12,114 @@ import {
     Send,
     ChevronRight,
     ChevronLeft,
-    PanelRightClose
+    PanelRightClose,
+    Loader2,
+    AlertCircle,
+    WifiOff,
+    RefreshCw
 } from "lucide-react"
-import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card"
-// Removed ResizablePanel imports
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import demoEmails from "@/public/sample-mails.json"
-import { Email } from "@/lib/types"
+import sampleChat from "@/public/sample-chat.json"
+import { CurrentUser, Email } from "@/lib/types"
 import EmailCard from "@/components/EmailCard"
+import CurrentUserBadge from "@/components/CurrentUserBadge"
 
 
 
 export default function MailsPage() {
+    const [loading, setLoading] = useState(true)
+    const [error, setError] = useState<boolean>(false)
     const [aiPanelOpen, setAiPanelOpen] = useState(true)
-    const [emailsPerPage, setEmailsPerPage] = useState("25")
+    const [maxEmails, setMaxEmails] = useState("25")
+    const [user, setUser] = useState<CurrentUser>({ name: "", email: "" })
     const [emails, setEmails] = useState<Email[]>([])
 
+    const displayedEmails = emails.slice(0, Number.parseInt(maxEmails))
+
+    async function fetchEmailsAndUserData() {
+        setLoading(true)
+        try {
+            const res = await fetch(`/api/mails?maxEmails=${maxEmails}`);
+            const { user, mails } = await res.json();
+            setUser(user);
+            setEmails(mails);
+            setLoading(false)
+            setError(true)
+        } catch (err) {
+            setError(true)
+            setLoading(false)
+        }
+    }
+
     useEffect(() => {
-        setEmails(demoEmails as Email[])
+        fetchEmailsAndUserData();
     }, [])
 
-    // Mock current user data
-    const currentUser = {
-        name: "Alex Johnson",
-        email: "alex.johnson@company.com",
+    // Loading State
+    if (loading) {
+        return (
+            <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+                <div className="text-center space-y-6 animate-fade-in">
+                    <div className="relative">
+                        <div className="w-20 h-20 bg-gray-900 rounded-2xl flex items-center justify-center mx-auto shadow-lg">
+                            <Mail className="w-10 h-10 text-white" />
+                        </div>
+                    </div>
+
+                    <div className="space-y-3">
+                        <h2 className="text-2xl font-semibold text-gray-900">Fetching your emails</h2>
+                        <p className="text-gray-600">Please wait while we load your inbox...</p>
+                    </div>
+
+                    <div className="flex items-center justify-center space-x-2">
+                        <div className="flex space-x-1">
+                            <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
+                            <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: "0.1s" }}></div>
+                            <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: "0.2s" }}></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        )
+    }
+
+    // Error State
+    if (error) {
+        return (
+            <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+                <div className="text-center space-y-6 animate-fade-in">
+                    <div className="relative">
+                        <div className="w-20 h-20 bg-red-500 rounded-2xl flex items-center justify-center mx-auto shadow-lg animate-shake">
+                            <AlertCircle className="w-10 h-10 text-white" />
+                        </div>
+                    </div>
+
+                    <div className="space-y-3">
+                        <h2 className="text-2xl font-semibold text-gray-900">Something went wrong</h2>
+                        <p className="text-gray-600">
+                            Please try again. If the issue persists, contact the developer.
+                        </p>
+                    </div>
+
+                    <div className="space-y-4">
+                        <button
+                            onClick={() => {
+                                // Clear cookies
+                                window.location.href = "/"
+                            }}
+                            className="bg-gray-900 hover:bg-gray-800 text-white px-6 py-2 rounded-lg transition-all duration-200 hover:scale-105"
+                        >
+                            Try Again
+                        </button>
+                    </div>
+                </div>
+            </div>
+        );
     }
 
 
-    const displayedEmails = emails.slice(0, Number.parseInt(emailsPerPage))
 
-
+    // Main Content
     return (
         <div className="h-screen bg-gray-50 flex flex-col">
             {/* Top Bar */}
@@ -70,16 +148,16 @@ export default function MailsPage() {
                             </div>
 
                             <div className="flex items-center gap-2">
-                                <Button variant="outline" size="sm" className="border-gray-200 bg-transparent">
+                                <Button variant="outline" size="sm" className="border-gray-200">
                                     <Filter className="w-4 h-4 mr-2" />
                                     Filter
                                 </Button>
 
-                                <Select value={emailsPerPage} onValueChange={setEmailsPerPage}>
+                                <Select value={maxEmails} onValueChange={setMaxEmails}>
                                     <SelectTrigger className="w-20 border-gray-200">
                                         <SelectValue />
                                     </SelectTrigger>
-                                    <SelectContent>
+                                    <SelectContent className="border-gray-200 bg-white">
                                         <SelectItem value="10">10</SelectItem>
                                         <SelectItem value="25">25</SelectItem>
                                         <SelectItem value="50">50</SelectItem>
@@ -102,25 +180,7 @@ export default function MailsPage() {
                                 {aiPanelOpen ? <ChevronRight className="w-3 h-3 ml-2" /> : <ChevronLeft className="w-3 h-3 ml-2" />}
                             </Button>
 
-                            <HoverCard>
-                                <HoverCardTrigger asChild>
-                                    <Button variant="ghost" className="h-8 w-8 rounded-full bg-gray-100 hover:bg-gray-200">
-                                        <span className="text-sm font-medium text-gray-700">
-                                            {currentUser.name
-                                                .split(" ")
-                                                .map((n) => n[0])
-                                                .join("")
-                                                .toUpperCase()}
-                                        </span>
-                                    </Button>
-                                </HoverCardTrigger>
-                                <HoverCardContent className="w-64" align="end">
-                                    <div className="space-y-2">
-                                        <p className="font-medium text-gray-900">{currentUser.name}</p>
-                                        <p className="text-sm text-gray-600">{currentUser.email}</p>
-                                    </div>
-                                </HoverCardContent>
-                            </HoverCard>
+                            <CurrentUserBadge user={user} />
                         </div>
                     </div>
                 </div>
@@ -138,86 +198,50 @@ export default function MailsPage() {
                         </div>
                     </div>
                 </div>
+
                 {/* AI Sidebar */}
                 {aiPanelOpen && (
-                  <aside className="h-full bg-gray-50 flex flex-col border-l border-gray-200" style={{ width: aiPanelOpen ? '35%' : '0%' }}>
-                      <div className="flex items-center justify-between p-4 border-b border-gray-200 bg-white flex-shrink-0">
-                          <div className="flex items-center gap-3">
-                              <div className="w-6 h-6 bg-gray-900 rounded-md flex items-center justify-center">
-                                  <MessageSquare className="w-3 h-3 text-white" />
-                              </div>
-                              <h2 className="font-medium text-gray-900">AI Assistant</h2>
-                          </div>
-                          <Button variant="ghost" size="sm" onClick={() => setAiPanelOpen(false)} className="h-8 w-8 p-0 hover:bg-gray-100">
-                              <PanelRightClose className="w-4 h-4" />
-                          </Button>
-                      </div>
-                      {/* Scrollable Chat Messages */}
-                      <div className="flex-1 overflow-auto p-4">
-                          <div className="space-y-4">
-                              <Card className="bg-white border-gray-200">
-                                  <CardContent className="p-3">
-                                      <p className="text-sm text-gray-700">
-                                          Hi! I'm your AI assistant. I can help you summarize emails, answer questions about your
-                                          mailbox, or help you draft replies.
-                                      </p>
-                                  </CardContent>
-                              </Card>
-                              <Card className="bg-gray-100 border-gray-200 ml-8">
-                                  <CardContent className="p-3">
-                                      <p className="text-sm text-gray-700">Can you summarize my unread emails?</p>
-                                  </CardContent>
-                              </Card>
-                              <Card className="bg-white border-gray-200">
-                                  <CardContent className="p-3">
-                                      <p className="text-sm text-gray-700">
-                                          You have several emails in the current view. The most recent include updates on Q4 planning,
-                                          campaign performance reports, and collaboration opportunities. Would you like me to provide
-                                          more details about any specific emails?
-                                      </p>
-                                  </CardContent>
-                              </Card>
-                              <Card className="bg-gray-100 border-gray-200 ml-8">
-                                  <CardContent className="p-3">
-                                      <p className="text-sm text-gray-700">What are the most important emails I should focus on?</p>
-                                  </CardContent>
-                              </Card>
-                              <Card className="bg-white border-gray-200">
-                                  <CardContent className="p-3">
-                                      <p className="text-sm text-gray-700">
-                                          Based on your emails, I'd recommend focusing on: 1) John Doe's Q4 planning initiative which
-                                          requires a meeting, 2) The marketing campaign performance report with strong results, and 3)
-                                          David Chen's contract review questions that need your response.
-                                      </p>
-                                  </CardContent>
-                              </Card>
-                              <Card className="bg-gray-100 border-gray-200 ml-8">
-                                  <CardContent className="p-3">
-                                      <p className="text-sm text-gray-700">Can you help me draft a reply to John Doe's email?</p>
-                                  </CardContent>
-                              </Card>
-                              <Card className="bg-white border-gray-200">
-                                  <CardContent className="p-3">
-                                      <p className="text-sm text-gray-700">
-                                          I'd be happy to help you draft a reply to John Doe's Q4 planning email. Here's a suggested
-                                          response: "Hi John, Thanks for the update on the Q4 planning initiative. The progress sounds
-                                          very promising. I'm available for a meeting next week to discuss the next steps. Please let me
-                                          know what times work best for you."
-                                      </p>
-                                  </CardContent>
-                              </Card>
-                          </div>
-                      </div>
-                      {/* Fixed Chat Input */}
-                      <div className="p-4 border-t border-gray-200 bg-white flex-shrink-0">
-                          <div className="flex gap-2">
-                              <Input placeholder="Ask about your emails..." className="flex-1 border-gray-200" />
-                              <Button size="sm" className="bg-gray-900 hover:bg-gray-800">
-                                  <Send className="w-4 h-4" />
-                              </Button>
-                          </div>
-                      </div>
-                  </aside>
+                    <aside className="h-full bg-gray-50 flex flex-col border-l border-gray-200" style={{ width: aiPanelOpen ? '35%' : '0%' }}>
+                        <div className="flex items-center justify-between p-4 border-b border-gray-200 bg-white flex-shrink-0">
+                            <div className="flex items-center gap-3">
+                                <div className="w-6 h-6 bg-gray-900 rounded-md flex items-center justify-center">
+                                    <MessageSquare className="w-3 h-3 text-white" />
+                                </div>
+                                <h2 className="font-medium text-gray-900">AI Assistant</h2>
+                            </div>
+                            <Button variant="ghost" size="sm" onClick={() => setAiPanelOpen(false)} className="h-8 w-8 p-0 hover:bg-gray-100">
+                                <PanelRightClose className="w-4 h-4" />
+                            </Button>
+                        </div>
+                        {/* Scrollable Chat Messages */}
+                        <div className="flex-1 overflow-auto p-4">
+                            <div className="space-y-4">
+                                {sampleChat.map((msg, idx) => (
+                                    <Card
+                                        key={idx}
+                                        className={
+                                            msg.role === 'assistant'
+                                                ? 'bg-white border-gray-200'
+                                                : 'bg-gray-100 border-gray-200 ml-8'
+                                        }
+                                    >
+                                        <CardContent className="p-3">
+                                            <p className="text-sm text-gray-700">{msg.content}</p>
+                                        </CardContent>
+                                    </Card>
+                                ))}
+                            </div>
+                        </div>
+                        {/* Fixed Chat Input */}
+                        <div className="p-4 border-t border-gray-200 bg-white flex-shrink-0">
+                            <div className="flex gap-2 items-center">
+                                <Input placeholder="Ask about your emails..." className="flex-1 border-gray-200" />
+                                <Button size="sm" className="bg-gray-900 hover:bg-gray-800 text-white">
+                                    <Send className="w-4 h-4" />
+                                </Button>
+                            </div>
+                        </div>
+                    </aside>
                 )}
             </div>
         </div>

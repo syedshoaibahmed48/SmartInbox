@@ -6,9 +6,9 @@ export default function EmailCard({ email }: { email: Email }) {
     return (
       <Card
         key={email.id}
-        className={`group cursor-pointer transition-all duration-200 hover:shadow-md border border-gray-200 hover:border-gray-300`}
+        className={`group cursor-pointer transition-all duration-200 hover:shadow-2xl hover:scale-y-105 border border-gray-200 hover:border-gray-300`}
       >
-        <CardContent className="px-4 py-2">
+        <CardContent className="px-4">
           <div className="space-y-1">
             {/* Header */}
             <div className="flex items-center justify-between">

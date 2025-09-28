@@ -3,33 +3,46 @@ import os
 
 from models.auth_models import TokenDetails
 
+def create_redis_client() -> redis.Redis:
+    try:
+        client = redis.Redis(
+            host=os.getenv("REDIS_HOST", "localhost"),
+            port=int(os.getenv("REDIS_PORT", 6379)),
+            db=0,
+            decode_responses=True
+        )
+        if not client.ping():  # Server check
+            raise redis.ConnectionError("Redis ping failed")
+        return client
+    except Exception as e:
+        raise RuntimeError(f"[Redis] Initialization failed: {e}") from e
+
 # Initialize Redis client
-try:
-    r = redis.Redis(
-        host=os.getenv("REDIS_HOST", "localhost"),
-        port=int(os.getenv("REDIS_PORT", 6379)),
-        db=0,
-        decode_responses=True
-    )
-    r.ping()  # Test connection
-except redis.ConnectionError as e:
-    print(f"Error connecting to Redis: {e}")
-    r = None
-    raise e
+r = create_redis_client()
 
 def store_session(sid: str, token_details: TokenDetails):
-    if r is None:
-        print("Redis client is not initialized.")
-        return None
     try:
-        r.hmset(sid, {
+        r.hset(sid, mapping={
             "provider": token_details["provider"],
             "access_token": token_details["access_token"],
             "refresh_token": token_details["refresh_token"],
             "expiry_time": str(token_details["expiry_time"])
         })
-        r.expire(sid, 600)  # Set expiry to 10 mins
+        r.expire(sid, 600)  # 10 minutes
         return True
     except Exception as e:
-        print(f"Error storing session in Redis: {e}")
-        return None
+        raise RuntimeError(f"[Redis] Store session failed: {e}") from e
+
+def get_session(sid: str) -> TokenDetails | None:
+    try:
+        session_data = r.hgetall(sid)
+        if not session_data:
+            return None
+        return TokenDetails(
+            provider=session_data["provider"],
+            access_token=session_data["access_token"],
+            refresh_token=session_data.get("refresh_token"),
+            expiry_time=int(session_data["expiry_time"])
+        )
+    except Exception as e:
+        raise RuntimeError(f"[Redis] Get session failed: {e}") from e

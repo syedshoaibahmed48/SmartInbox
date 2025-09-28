@@ -15,3 +15,8 @@ export interface Email {
   date: string
   hasAttachment: boolean
 }
+
+export interface CurrentUser {
+  name: string
+  email: string
+}
