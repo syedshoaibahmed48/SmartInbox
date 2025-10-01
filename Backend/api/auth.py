@@ -1,6 +1,7 @@
 import uuid
 from fastapi import APIRouter, HTTPException, Request
 from pydantic import EmailStr
+from services.sid_utils import encrypt_sid
 from services.redis_client import store_session
 from services.oauth_flow import get_access_refresh_tokens, get_sso_url, is_valid_email
 
@@ -40,5 +41,8 @@ async def exchange_code(request: Request):
     session = store_session(sid, token_details)
     if not session:
         raise HTTPException(status_code=500, detail="Failed to store session")
+    
+    # return encrypted sid
+    encrypted_sid = encrypt_sid(sid)
 
-    return {"sid": sid}
+    return {"sid": encrypted_sid}

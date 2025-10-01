@@ -8,7 +8,7 @@ export async function apiClient(path: string, options: RequestInit = {}, useProx
       headers: {
       ...options.headers,
       "Content-Type": "application/json",
-      ...(useProxy ? {} : { Authorization: `Bearer ${process.env.API_KEY}` })
+      ...(useProxy ? {} : { Authorization: `Bearer ${process.env.API_KEY}` }),
       }
     });
 

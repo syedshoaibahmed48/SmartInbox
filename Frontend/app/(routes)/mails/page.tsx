@@ -44,7 +44,6 @@ export default function MailsPage() {
             setUser(user);
             setEmails(mails);
             setLoading(false)
-            setError(true)
         } catch (err) {
             setError(true)
             setLoading(false)
