@@ -46,3 +46,10 @@ def get_session(sid: str) -> TokenDetails | None:
         )
     except Exception as e:
         raise RuntimeError(f"[Redis] Get session failed: {e}") from e
+    
+def is_valid_session(sid: str) -> bool:
+    if r.exists(sid) == 1:
+        r.expire(sid, 600, gt=True) # Extend expiry
+        return True
+    else:
+        return False

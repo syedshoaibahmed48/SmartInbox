@@ -19,6 +19,7 @@ export async function apiClient(path: string, options: RequestInit = {}, useProx
       }
       if (res.status === 400) throw { message: errorData.message || "Bad Request", status: 400 };
       else if (res.status === 401) throw { message: "Unauthorized access", status: 401 };
+      else if (res.status === 440 ) throw { message: "Session over due to inactivity", status: 440 };
       else if (res.status === 500) throw { message: "Internal server error, please try again later.", status: 500 };
       else{
         throw { message: "An unexpected error occurred", status: 500 };

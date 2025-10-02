@@ -1,17 +1,24 @@
+from fastapi import HTTPException, Request
 from fastapi import APIRouter
 
-from Backend.services.redis_client import get_session
+from services.sid_utils import decrypt_sid
+from services.redis_client import get_session
 
 
 router = APIRouter()
 
-@router.get("/mails")
-async def get_mails(sid: str):
-    # get session from redis using sid
-    provider, access_token = get_session(sid)
-    print(provider, access_token)
+@router.get("")
+async def get_mails(request: Request):
+    try:
+        # Extract parameters
+        params = request.query_params
+        count = params.get("count", 10)
+        filter = params.get("filter", "all")
 
-    # Fetch emails from the email provider's API
+        # Get session from Redis
+        sid = decrypt_sid(request.headers.get("X-Session-ID", ""))
+        session = get_session(sid)
 
-
-    return {"mails": []}
+        return {"mails": []}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Internal server error: {e}") from e

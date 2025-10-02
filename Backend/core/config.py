@@ -1,0 +1,3 @@
+PROTECTED_PATHS = [
+    "/mails"
+]

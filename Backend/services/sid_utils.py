@@ -5,9 +5,11 @@ from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
 from cryptography.hazmat.backends import default_backend
 from cryptography.exceptions import InvalidTag
 
+from services.redis_client import is_valid_session
+
 
 ALGORITHM = "aes-256-gcm"
-IV_LENGTH = 16
+IV_LENGTH = 12
 AUTH_TAG_LENGTH = 16
 ENCRYPTION_KEY = hashlib.sha256(str(os.environ.get("SID_ENCRYPTION_SECRET", "")).encode()).digest()
 
@@ -38,7 +40,15 @@ def decrypt_sid(encrypted_sid: str) -> str:
             backend=default_backend()
         ).decryptor()
 
+
         decrypted_sid = decryptor.update(ciphertext) + decryptor.finalize()
         return decrypted_sid.decode("utf-8")
     except (InvalidTag, ValueError) as e:
         raise ValueError("Decryption failed or data is tampered") from e
+    
+def is_valid_encrypted_sid(encrypted_sid: str) -> bool:
+    try:
+        sid = decrypt_sid(encrypted_sid) # Check if decryption works
+        return is_valid_session(sid) # Check if session exists in Redis
+    except ValueError:
+        return False

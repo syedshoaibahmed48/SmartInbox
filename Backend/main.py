@@ -5,9 +5,13 @@ from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
-from api.auth import router as auth_router
-
+from core.config import PROTECTED_PATHS
 from core.errors import http_exception_handler, validation_exception_handler
+from services.sid_utils import is_valid_encrypted_sid
+from api.auth import router as auth_router
+from api.mails import router as mails_router
+
+
 
 load_dotenv()
 
@@ -29,18 +33,19 @@ API_KEY = os.getenv("API_KEY")
 # Middleware to check API key
 @app.middleware("http")
 async def api_key_middleware(request, call_next):
-
-    # API key check
+    # API key and session ID checks
     if request.headers.get("Authorization") != f"Bearer {API_KEY}":
+        print("Unauthorized: Invalid or missing API key.")
         return JSONResponse(status_code=401, content={"error": "Unauthorized: Invalid or missing API key."})
-
+    elif any(path in request.url.path for path in PROTECTED_PATHS) and not is_valid_encrypted_sid(request.headers.get("X-Session-ID", "")):
+        return JSONResponse(status_code=440, content={"error": "Session over due to inactivity, please login again"})
+    
     response = await call_next(request)
     return response
 
 # Register routes
 app.include_router(auth_router, prefix="/auth", tags=["auth"])
-
-
+app.include_router(mails_router, prefix="/mails", tags=["mails"])
 
 # Register error handlers
 app.add_exception_handler(RequestValidationError, validation_exception_handler)

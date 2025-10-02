@@ -22,27 +22,30 @@ async def return_sso_url(email: EmailStr):
 
 @router.post("/token")
 async def exchange_code(request: Request):
-    data = await request.json()
-    code = data.get("code")
-    provider = data.get("provider")
+    try:
+        data = await request.json()
+        code = data.get("code")
+        provider = data.get("provider")
 
-    if not code or not provider:
-        raise HTTPException(status_code=400, detail="Missing code or provider")
+        if not code or not provider:
+            raise HTTPException(status_code=400, detail="Missing code or provider")
     
-    token_details = get_access_refresh_tokens(provider, code)
+        token_details = get_access_refresh_tokens(provider, code)
 
-    if token_details is None:
-        raise HTTPException(status_code=400, detail="Failed to retrieve tokens from provider")
+        if token_details is None:
+            raise HTTPException(status_code=400, detail="Failed to retrieve tokens from provider")
 
-    # Generate a unique session ID
-    sid = str(uuid.uuid4()) 
+        # Generate a unique session ID
+        sid = str(uuid.uuid4()) 
 
-    # Store session in Redis
-    session = store_session(sid, token_details)
-    if not session:
-        raise HTTPException(status_code=500, detail="Failed to store session")
+        # Store session in Redis
+        session = store_session(sid, token_details)
+        if not session:
+            raise HTTPException(status_code=500, detail="Failed to store session")
     
-    # return encrypted sid
-    encrypted_sid = encrypt_sid(sid)
+        # return encrypted sid
+        encrypted_sid = encrypt_sid(sid)
 
-    return {"sid": encrypted_sid}
+        return {"sid": encrypted_sid}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Internal server error: {e}") from e
