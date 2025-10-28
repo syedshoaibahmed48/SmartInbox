@@ -6,7 +6,6 @@ from fastapi import HTTPException
 from data.email_providers import Email_Providers
 from urllib.parse import urlencode
 import requests
-import uuid
 
 load_dotenv()
 

@@ -2,7 +2,7 @@ import uuid
 from fastapi import APIRouter, HTTPException, Request
 from pydantic import EmailStr
 from services.sid_utils import encrypt_sid
-from services.redis_client import store_session
+from services.redis_client import delete_session, store_session
 from services.oauth_flow import get_access_refresh_tokens, get_sso_url, is_valid_email
 
 router = APIRouter()
@@ -47,5 +47,17 @@ async def exchange_code(request: Request):
         encrypted_sid = encrypt_sid(sid)
 
         return {"sid": encrypted_sid}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Internal server error: {e}") from e
+    
+@router.post("/logout")
+async def clear_session(request: Request):
+    try:
+        sid = request.cookies.get("token")
+        if not sid:
+            return {"success": True}
+
+        result = delete_session(sid)
+        return {"success": result}
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Internal server error: {e}") from e

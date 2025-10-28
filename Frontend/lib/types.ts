@@ -4,13 +4,14 @@ export interface ApiClientError extends Error {
 }
 
 export interface Email {
-  id: number
+  id: string
   sender: {
     name: string
     email: string
   }
   subject: string
   body: string
+  bodyPreview?: string
   time: string
   date: string
   hasAttachment: boolean

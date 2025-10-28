@@ -1,13 +1,12 @@
 "use client"
 
-import { useState, useEffect, use } from "react"
+import { useState, useEffect, useRef } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent } from "@/components/ui/card"
 import {
     Mail,
     Search,
-    Filter,
     MessageSquare,
     Send,
     ChevronRight,
@@ -21,97 +20,49 @@ import { CurrentUser, Email } from "@/lib/types"
 import EmailCard from "@/components/EmailCard"
 import CurrentUserBadge from "@/components/CurrentUserBadge"
 import { apiClient } from "@/lib/apiClient"
+import SomethingWentWrong from "@/components/SomethingWentWrong"
+import LoadingMails from "@/components/LoadingMails"
+import SessionExpired from "@/components/SessionExpiredError"
 
 
 export default function MailsPage() {
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState<boolean>(false)
+    const [sessionExpired, setSessionExpired] = useState<boolean>(false)
     const [aiPanelOpen, setAiPanelOpen] = useState(true)
     const [count, setCount] = useState("25")
+    const [filterString, setFilterString] = useState("")
     const [filter, setFilter] = useState("")
     const [user, setUser] = useState<CurrentUser>({ name: "", email: "" })
     const [emails, setEmails] = useState<Email[]>([])
 
     async function fetchEmailsAndUserData() {
+        setLoading(true);
         try {
             const res = await apiClient(`/api/mails?count=${count}&filter=${filter}`, { method: "GET" }, true);
             const { user, mails } = res;
             setUser(user);
             setEmails(mails);
             setLoading(false)
-        } catch (err) {
-            setError(true)
-            setLoading(false)
+        } catch (err: any) {
+            if (err.status === 440) setSessionExpired(true);
+            else setError(true)
+            setLoading(false) 
         }
     }
 
     useEffect(() => {
-        setLoading(true);
         fetchEmailsAndUserData();
-    }, [])
+    }, [filter, count])
 
     // Loading State
-    if (loading) {
-        return (
-            <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-                <div className="text-center space-y-6 animate-fade-in">
-                    <div className="relative">
-                        <div className="w-20 h-20 bg-gray-900 rounded-2xl flex items-center justify-center mx-auto shadow-lg">
-                            <Mail className="w-10 h-10 text-white" />
-                        </div>
-                    </div>
-
-                    <div className="space-y-3">
-                        <h2 className="text-2xl font-semibold text-gray-900">Fetching your emails</h2>
-                        <p className="text-gray-600">Please wait while we load your inbox...</p>
-                    </div>
-
-                    <div className="flex items-center justify-center space-x-2">
-                        <div className="flex space-x-1">
-                            <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
-                            <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: "0.1s" }}></div>
-                            <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: "0.2s" }}></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        )
-    }
+    if (loading) return <LoadingMails />
 
     // Error State
-    if (error) {
-        return (
-            <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-                <div className="text-center space-y-6 animate-fade-in">
-                    <div className="relative">
-                        <div className="w-20 h-20 bg-red-500 rounded-2xl flex items-center justify-center mx-auto shadow-lg animate-shake">
-                            <AlertCircle className="w-10 h-10 text-white" />
-                        </div>
-                    </div>
+    if (error) return <SomethingWentWrong />
 
-                    <div className="space-y-3">
-                        <h2 className="text-2xl font-semibold text-gray-900">Something went wrong</h2>
-                        <p className="text-gray-600">
-                            Please try again. If the issue persists, contact the developer.
-                        </p>
-                    </div>
-
-                    <div className="space-y-4">
-                        <button
-                            onClick={() => {
-                                window.location.href = "/"
-                            }}
-                            className="bg-gray-900 hover:bg-gray-800 text-white px-6 py-2 rounded-lg transition-all duration-200 hover:scale-105"
-                        >
-                            Try Again
-                        </button>
-                    </div>
-                </div>
-            </div>
-        );
-    }
-
-
+    // Session Expired State
+    if (sessionExpired) return <SessionExpired />
 
     // Main Content
     return (
@@ -135,21 +86,36 @@ export default function MailsPage() {
                             <div className="relative flex-1 max-w-md">
                                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
                                 <Input
-                                    type="search"
+                                    type="text"
                                     placeholder="Search emails..."
-                                    className="pl-10 bg-gray-50 border-gray-200 focus:bg-white"
-                                    value={filter}
-                                    onChange={(e) => setFilter(e.target.value)}
+                                    className="pl-10 pr-10 bg-gray-50 border-gray-200 focus:bg-white"
+                                    value={filterString}
+                                    onChange={(e) => setFilterString(e.target.value)}
+                                    onKeyDown={(e) => {
+                                        if ((e as React.KeyboardEvent<HTMLInputElement>).key === 'Enter') setFilter(filterString);
+                                    }}
                                 />
+
+                                {filter.length > 0 && (
+                                    <div className="absolute right-2 top-1/2 transform -translate-y-1/2">
+                                        <Button
+                                            variant="ghost"
+                                            size="sm"
+                                            onClick={() => {
+                                                setFilter("");
+                                                setFilterString("");
+                                            }}
+                                            className="text-sm text-red-600"
+                                        >
+                                            Clear
+                                        </Button>
+                                    </div>
+                                )}
                             </div>
 
                             <div className="flex items-center gap-2">
-                                <Button variant="outline" size="sm" className="border-gray-200 hover:bg-gray-100" onClick={() => fetchEmailsAndUserData()}>
-                                    <Filter className="w-4 h-4 mr-2" />
-                                    Filter
-                                </Button>
 
-                                <Select value={count} onValueChange={(value) => { setCount(value); fetchEmailsAndUserData(); }}>
+                                <Select value={count} onValueChange={(value) => { setCount(value) }}>
                                     <SelectTrigger className="w-20 border-gray-200">
                                         <SelectValue />
                                     </SelectTrigger>

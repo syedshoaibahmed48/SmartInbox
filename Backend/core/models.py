@@ -6,7 +6,6 @@ from typing import Callable, List, Optional
 class Email(BaseModel):
     email: EmailStr = Field(..., description="The email address of the user")
 
-
 class TokenRequestPayload(BaseModel):
     client_id: str = Field(..., description="OAuth client ID")
     client_secret: Optional[str] = Field(None, description="OAuth client secret")
@@ -23,6 +22,8 @@ class EmailProviderConfig(BaseModel):
     sso_url: str = Field(..., description="SSO URL for OAuth flow")
     token_url: str = Field(..., description="Token endpoint URL")
     token_request_payload: Callable[[Optional[str]], dict] = Field(..., description="Function to build token request payload (returns TokenRequestPayload)")
+    get_profile: Callable[[str], dict] = Field(..., description="Function to get user profile data")
+    get_mails: Callable[[str, int, str], dict] = Field(..., description="Function to get user mails")
 
 class TokenDetails(BaseModel):
     provider: str = Field(..., description="OAuth provider name")

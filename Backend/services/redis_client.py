@@ -1,7 +1,7 @@
 import redis
 import os
 
-from models.auth_models import TokenDetails
+from core.models import TokenDetails
 
 def create_redis_client() -> redis.Redis:
     try:
@@ -19,6 +19,13 @@ def create_redis_client() -> redis.Redis:
 
 # Initialize Redis client
 r = create_redis_client()
+
+def is_valid_session(sid: str) -> bool:
+    if r.exists(sid) == 1:
+        r.expire(sid, 1, gt=False) # Extend expiry
+        return True
+    else:
+        return False
 
 def store_session(sid: str, token_details: TokenDetails):
     try:
@@ -46,10 +53,10 @@ def get_session(sid: str) -> TokenDetails | None:
         )
     except Exception as e:
         raise RuntimeError(f"[Redis] Get session failed: {e}") from e
-    
-def is_valid_session(sid: str) -> bool:
-    if r.exists(sid) == 1:
-        r.expire(sid, 600, gt=True) # Extend expiry
-        return True
-    else:
-        return False
+
+def delete_session(sid: str) -> bool:
+    try:
+        result = r.delete(sid)
+        return result == 1
+    except Exception as e:
+        raise RuntimeError(f"[Redis] Delete session failed: {e}") from e

@@ -1,8 +1,19 @@
 import { CurrentUser } from "@/lib/types";
 import { Button } from "./ui/button";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "./ui/hover-card";
+import { apiClient } from "@/lib/apiClient";
+import { toast } from "sonner";
 
 export default function CurrentUserBadge({ user }: { user: CurrentUser }) {
+    async function handleLogout() {
+        try {
+            await apiClient('/api/auth/logout', { method: 'POST' }, true);
+            // Redirect to home after logout
+            window.location.href = '/';
+        } catch (err: any) {
+            toast.error(err?.message || 'Logout failed.');
+        }
+    }
     return (
         <HoverCard>
             <HoverCardTrigger asChild>
@@ -17,9 +28,14 @@ export default function CurrentUserBadge({ user }: { user: CurrentUser }) {
                 </Button>
             </HoverCardTrigger>
             <HoverCardContent className="w-64 bg-white" align="end">
-                <div className="space-y-2">
+                <div className="">
                     <p className="font-medium text-gray-900">{user.name}</p>
                     <p className="text-sm text-gray-600">{user.email}</p>
+                    <div className="w-full mt-2">
+                        <Button variant="default" onClick={handleLogout} className="bg-red-500 hover:bg-red-700 text-white">
+                            Logout
+                        </Button>
+                    </div>
                 </div>
             </HoverCardContent>
         </HoverCard>

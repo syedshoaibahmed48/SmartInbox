@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from "next/server";
-import samplemails from "@/public/sample-mails.json"
 import { apiClient } from "@/lib/apiClient";
 import { getSidFromToken } from "@/lib/authUtil";
 import { ApiClientError } from "@/lib/types";
@@ -21,17 +20,9 @@ export async function GET(request: NextRequest) {
 
         const res = await apiClient(`/mails?${query}`, { method: "GET", headers: { "X-Session-ID": sid } }, false);
 
-        console.log("Mails fetched from backend:", await res);
+        const { user_details, user_mails } = res;
 
-        // return sample user data for now
-        const user = {
-            name: "Alex Johnson",
-            email: "alex.johnson@example.com",
-        }
-
-        const mails = samplemails.slice(0, count);
-
-        return NextResponse.json({ user, mails });
+        return NextResponse.json({ user: user_details, mails: user_mails });
     } catch (error: unknown) {
         const err = error as ApiClientError;
         return NextResponse.json(

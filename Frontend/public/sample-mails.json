@@ -6,7 +6,7 @@
       "email": "john.doe@techcorp.com"
     },
     "subject": "Project Update - Q4 Planning Initiative",
-    "body": "Hi team, I wanted to share the latest updates on our Q4 planning initiative. We've made significant progress on the roadmap and I'd like to schedule a meeting to discuss the next steps. The preliminary results look very promising and I think we're on track to exceed our targets.",
+    "bodyPreview": "Hi team, I wanted to share the latest updates on our Q4 planning initiative. We've made significant progress on the roadmap and I'd like to schedule a meeting to discuss the next steps. The preliminary results look very promising and I think we're on track to exceed our targets.",
     "time": "2:30 PM",
     "date": "Today",
     "unread": true,
@@ -20,7 +20,7 @@
       "email": "sarah.wilson@designstudio.com"
     },
     "subject": "Meeting Notes - Design Review Session",
-    "body": "Thanks for joining today's design review session. Here are the key takeaways and action items we discussed. The new mockups received positive feedback from the stakeholders, and we're ready to move forward with the implementation phase.",
+    "bodyPreview": "Thanks for joining today's design review session. Here are the key takeaways and action items we discussed. The new mockups received positive feedback from the stakeholders, and we're ready to move forward with the implementation phase.",
     "time": "1:15 PM",
     "date": "Today",
     "unread": false,
@@ -34,7 +34,7 @@
       "email": "marketing@company.com"
     },
     "subject": "Campaign Performance Report - November 2024",
-    "body": "Our latest marketing campaign has shown impressive results across all channels. Here's the comprehensive breakdown of metrics, conversion rates, and ROI analysis. The email campaign performed exceptionally well with a 24% open rate.",
+    "bodyPreview": "Our latest marketing campaign has shown impressive results across all channels. Here's the comprehensive breakdown of metrics, conversion rates, and ROI analysis. The email campaign performed exceptionally well with a 24% open rate.",
     "time": "11:45 AM",
     "date": "Today",
     "unread": true,
@@ -48,7 +48,7 @@
       "email": "david.chen@partner.com"
     },
     "subject": "Re: Contract Review and Amendments",
-    "body": "I've reviewed the contract amendments you sent yesterday. Overall, the changes look good, but I have a few questions about section 4.2 regarding the payment terms. Could we schedule a quick call to discuss?",
+    "bodyPreview": "I've reviewed the contract amendments you sent yesterday. Overall, the changes look good, but I have a few questions about section 4.2 regarding the payment terms. Could we schedule a quick call to discuss?",
     "time": "4:20 PM",
     "date": "Yesterday",
     "unread": false,
@@ -62,7 +62,7 @@
       "email": "j.lopez@hr.company.com"
     },
     "subject": "Team Building Event - December Planning",
-    "body": "Hope you're doing well! I'm reaching out to start planning our December team building event. We're considering a few different options and would love to get your input on what activities the team would enjoy most.",
+    "bodyPreview": "Hope you're doing well! I'm reaching out to start planning our December team building event. We're considering a few different options and would love to get your input on what activities the team would enjoy most.",
     "time": "2:15 PM",
     "date": "Yesterday",
     "unread": false,
@@ -76,7 +76,7 @@
       "email": "alex.rodriguez@startup.io"
     },
     "subject": "Collaboration Opportunity - AI Integration",
-    "body": "I hope this email finds you well. We're working on an exciting AI integration project and would love to explore potential collaboration opportunities with your team. The project involves machine learning algorithms for email processing.",
+    "bodyPreview": "I hope this email finds you well. We're working on an exciting AI integration project and would love to explore potential collaboration opportunities with your team. The project involves machine learning algorithms for email processing.",
     "time": "9:30 AM",
     "date": "Yesterday",
     "unread": true,
@@ -90,7 +90,7 @@
       "email": "support@emailservice.com"
     },
     "subject": "Your Monthly Usage Report",
-    "body": "Here's your monthly usage summary for November 2024. You've sent 1,247 emails and received 3,891 emails this month. Your storage usage is at 68% capacity. Consider upgrading your plan for additional storage.",
+    "bodyPreview": "Here's your monthly usage summary for November 2024. You've sent 1,247 emails and received 3,891 emails this month. Your storage usage is at 68% capacity. Consider upgrading your plan for additional storage.",
     "time": "8:00 AM",
     "date": "Yesterday",
     "unread": false,
@@ -104,7 +104,7 @@
       "email": "lisa.park@consulting.com"
     },
     "subject": "Quarterly Business Review - Action Items",
-    "body": "Following up on our quarterly business review meeting. Here are the key action items we discussed: 1) Implement new CRM system by Q1 2025, 2) Hire additional team members for the expansion, 3) Review and update our pricing strategy.",
+    "bodyPreview": "Following up on our quarterly business review meeting. Here are the key action items we discussed: 1) Implement new CRM system by Q1 2025, 2) Hire additional team members for the expansion, 3) Review and update our pricing strategy.",
     "time": "6:45 PM",
     "date": "2 days ago",
     "unread": true,
@@ -118,7 +118,7 @@
       "email": "m.brown@techsolutions.net"
     },
     "subject": "Security Update Required - Urgent",
-    "body": "We've identified a security vulnerability that requires immediate attention. Please update your system credentials and enable two-factor authentication by end of day. This is critical for maintaining the security of our shared resources.",
+    "bodyPreview": "We've identified a security vulnerability that requires immediate attention. Please update your system credentials and enable two-factor authentication by end of day. This is critical for maintaining the security of our shared resources.",
     "time": "3:20 PM",
     "date": "2 days ago",
     "unread": false,
@@ -132,7 +132,7 @@
       "email": "emma.t@creativeagency.com"
     },
     "subject": "Brand Guidelines Update - Version 2.1",
-    "body": "We've updated our brand guidelines to include new color palettes and typography standards. The updated guidelines are now available in the shared drive. Please review and implement these changes in all upcoming projects.",
+    "bodyPreview": "We've updated our brand guidelines to include new color palettes and typography standards. The updated guidelines are now available in the shared drive. Please review and implement these changes in all upcoming projects.",
     "time": "1:10 PM",
     "date": "2 days ago",
     "unread": true,
@@ -146,7 +146,7 @@
       "email": "robert.kim@finance.corp"
     },
     "subject": "Budget Approval - Q1 2025 Marketing Spend",
-    "body": "The marketing budget for Q1 2025 has been approved. Total allocated amount is $125,000 with breakdown as follows: Digital advertising 60%, Content creation 25%, Events and conferences 15%. Please proceed with campaign planning.",
+    "bodyPreview": "The marketing budget for Q1 2025 has been approved. Total allocated amount is $125,000 with breakdown as follows: Digital advertising 60%, Content creation 25%, Events and conferences 15%. Please proceed with campaign planning.",
     "time": "11:30 AM",
     "date": "2 days ago",
     "unread": false,
@@ -160,7 +160,7 @@
       "email": "newsletter@techweekly.com"
     },
     "subject": "Weekly Tech Digest - AI Breakthroughs & Startup News",
-    "body": "This week's highlights: OpenAI announces new GPT model, three major startup acquisitions, and breakthrough in quantum computing research. Plus, our exclusive interview with the CEO of the fastest-growing fintech company.",
+    "bodyPreview": "This week's highlights: OpenAI announces new GPT model, three major startup acquisitions, and breakthrough in quantum computing research. Plus, our exclusive interview with the CEO of the fastest-growing fintech company.",
     "time": "7:00 AM",
     "date": "3 days ago",
     "unread": true,
@@ -174,7 +174,7 @@
       "email": "amanda.foster@lawfirm.com"
     },
     "subject": "Legal Review Complete - Contract Terms",
-    "body": "I've completed the legal review of the partnership agreement. Overall, the terms are favorable, but I recommend a few minor modifications to clauses 7 and 12. I've attached the marked-up version with my suggested changes.",
+    "bodyPreview": "I've completed the legal review of the partnership agreement. Overall, the terms are favorable, but I recommend a few minor modifications to clauses 7 and 12. I've attached the marked-up version with my suggested changes.",
     "time": "4:15 PM",
     "date": "3 days ago",
     "unread": false,
@@ -188,7 +188,7 @@
       "email": "notifications@projecttool.com"
     },
     "subject": "Weekly Project Summary - 5 Tasks Completed",
-    "body": "Your weekly project summary: 5 tasks completed, 3 tasks in progress, 2 new tasks assigned. The mobile app redesign project is 78% complete and on track for the December 15th deadline. Great work this week!",
+    "bodyPreview": "Your weekly project summary: 5 tasks completed, 3 tasks in progress, 2 new tasks assigned. The mobile app redesign project is 78% complete and on track for the December 15th deadline. Great work this week!",
     "time": "2:00 PM",
     "date": "3 days ago",
     "unread": true,
@@ -202,7 +202,7 @@
       "email": "carlos.m@globalcorp.com"
     },
     "subject": "International Expansion Strategy Meeting",
-    "body": "Let's schedule a meeting to discuss our international expansion strategy for 2025. I'd like to review the market research data for European and Asian markets, and discuss potential partnership opportunities in those regions.",
+    "bodyPreview": "Let's schedule a meeting to discuss our international expansion strategy for 2025. I'd like to review the market research data for European and Asian markets, and discuss potential partnership opportunities in those regions.",
     "time": "10:45 AM",
     "date": "3 days ago",
     "unread": false,
@@ -216,7 +216,7 @@
       "email": "hr@company.com"
     },
     "subject": "Annual Performance Review Cycle Begins",
-    "body": "The annual performance review cycle for 2024 begins next week. Please complete your self-assessment by December 10th and schedule one-on-one meetings with your direct reports. The review portal is now open and accessible through the employee dashboard.",
+    "bodyPreview": "The annual performance review cycle for 2024 begins next week. Please complete your self-assessment by December 10th and schedule one-on-one meetings with your direct reports. The review portal is now open and accessible through the employee dashboard.",
     "time": "9:15 AM",
     "date": "4 days ago",
     "unread": true,
@@ -230,7 +230,7 @@
       "email": "sophie.chen@designstudio.co"
     },
     "subject": "UI/UX Design Mockups - Final Review",
-    "body": "I've completed the final UI/UX mockups for the mobile application. The designs incorporate all the feedback from the stakeholder review sessions. Please review and let me know if any adjustments are needed before we proceed to development.",
+    "bodyPreview": "I've completed the final UI/UX mockups for the mobile application. The designs incorporate all the feedback from the stakeholder review sessions. Please review and let me know if any adjustments are needed before we proceed to development.",
     "time": "5:30 PM",
     "date": "4 days ago",
     "unread": false,
@@ -244,7 +244,7 @@
       "email": "security@company.com"
     },
     "subject": "Mandatory Security Training - Due December 20th",
-    "body": "All employees must complete the mandatory cybersecurity training by December 20th, 2024. The training covers phishing awareness, password security, and data protection protocols. Access the training portal through your employee dashboard.",
+    "bodyPreview": "All employees must complete the mandatory cybersecurity training by December 20th, 2024. The training covers phishing awareness, password security, and data protection protocols. Access the training portal through your employee dashboard.",
     "time": "8:45 AM",
     "date": "4 days ago",
     "unread": true,
@@ -258,7 +258,7 @@
       "email": "daniel.wright@consulting.biz"
     },
     "subject": "Market Analysis Report - Q4 2024",
-    "body": "The Q4 market analysis is complete. Key findings: 15% growth in our target demographic, increased competition in the premium segment, and emerging opportunities in the sustainable products category. Detailed report attached.",
+    "bodyPreview": "The Q4 market analysis is complete. Key findings: 15% growth in our target demographic, increased competition in the premium segment, and emerging opportunities in the sustainable products category. Detailed report attached.",
     "time": "3:00 PM",
     "date": "5 days ago",
     "unread": false,
@@ -272,7 +272,7 @@
       "email": "events@techconf2025.com"
     },
     "subject": "TechConf 2025 - Speaker Invitation",
-    "body": "We're excited to invite you to speak at TechConf 2025, taking place March 15-17 in San Francisco. Your expertise in AI and machine learning would be a valuable addition to our program. The conference expects 5,000+ attendees from the tech industry.",
+    "bodyPreview": "We're excited to invite you to speak at TechConf 2025, taking place March 15-17 in San Francisco. Your expertise in AI and machine learning would be a valuable addition to our program. The conference expects 5,000+ attendees from the tech industry.",
     "time": "11:20 AM",
     "date": "5 days ago",
     "unread": true,
@@ -286,7 +286,7 @@
       "email": "rachel.green@mediacompany.com"
     },
     "subject": "Content Calendar - December 2024",
-    "body": "Here's the content calendar for December 2024. We have 20 blog posts scheduled, 15 social media campaigns, and 3 video productions. The holiday-themed content will go live starting December 1st. Please review and approve by end of week.",
+    "bodyPreview": "Here's the content calendar for December 2024. We have 20 blog posts scheduled, 15 social media campaigns, and 3 video productions. The holiday-themed content will go live starting December 1st. Please review and approve by end of week.",
     "time": "2:45 PM",
     "date": "5 days ago",
     "unread": false,
@@ -300,7 +300,7 @@
       "email": "finance@company.com"
     },
     "subject": "Expense Report Submission Reminder",
-    "body": "Reminder: All expense reports for November 2024 must be submitted by December 5th for timely reimbursement. Please ensure all receipts are attached and expense categories are correctly selected. Contact finance team for any questions.",
+    "bodyPreview": "Reminder: All expense reports for November 2024 must be submitted by December 5th for timely reimbursement. Please ensure all receipts are attached and expense categories are correctly selected. Contact finance team for any questions.",
     "time": "9:00 AM",
     "date": "6 days ago",
     "unread": true,
@@ -314,7 +314,7 @@
       "email": "kevin.liu@techstartup.io"
     },
     "subject": "Product Launch Strategy - Beta Testing Results",
-    "body": "The beta testing phase is complete with excellent results. 94% user satisfaction rate, average session time of 12 minutes, and positive feedback on the new features. We're ready to proceed with the full product launch scheduled for January 2025.",
+    "bodyPreview": "The beta testing phase is complete with excellent results. 94% user satisfaction rate, average session time of 12 minutes, and positive feedback on the new features. We're ready to proceed with the full product launch scheduled for January 2025.",
     "time": "4:30 PM",
     "date": "6 days ago",
     "unread": false,
@@ -328,7 +328,7 @@
       "email": "reports@industryinsights.com"
     },
     "subject": "2024 Industry Trends Report - Technology Sector",
-    "body": "The comprehensive 2024 technology sector report is now available. Key trends include: AI adoption accelerating across industries, remote work technologies maturing, and increased focus on cybersecurity. Download your complimentary copy today.",
+    "bodyPreview": "The comprehensive 2024 technology sector report is now available. Key trends include: AI adoption accelerating across industries, remote work technologies maturing, and increased focus on cybersecurity. Download your complimentary copy today.",
     "time": "7:30 AM",
     "date": "6 days ago",
     "unread": true,
@@ -342,7 +342,7 @@
       "email": "maria.santos@globalpartners.com"
     },
     "subject": "Partnership Agreement - Final Terms",
-    "body": "We've reached agreement on the final terms for our strategic partnership. The contract includes revenue sharing at 70/30 split, joint marketing initiatives, and shared technology resources. Legal teams from both sides will finalize documentation this week.",
+    "bodyPreview": "We've reached agreement on the final terms for our strategic partnership. The contract includes revenue sharing at 70/30 split, joint marketing initiatives, and shared technology resources. Legal teams from both sides will finalize documentation this week.",
     "time": "1:20 PM",
     "date": "1 week ago",
     "unread": false,
@@ -356,7 +356,7 @@
       "email": "training@company.com"
     },
     "subject": "New Employee Onboarding - December Cohort",
-    "body": "The December new employee onboarding program begins December 9th. This month's cohort includes 8 new team members across engineering, marketing, and sales departments. Please welcome them and assist with their integration into our company culture.",
+    "bodyPreview": "The December new employee onboarding program begins December 9th. This month's cohort includes 8 new team members across engineering, marketing, and sales departments. Please welcome them and assist with their integration into our company culture.",
     "time": "10:15 AM",
     "date": "1 week ago",
     "unread": true,
@@ -370,7 +370,7 @@
       "email": "james.wilson@clientcorp.com"
     },
     "subject": "Client Feedback - Project Delivery Excellence",
-    "body": "I wanted to personally thank you and your team for the exceptional work on our recent project. The delivery exceeded our expectations in terms of quality, timeline, and communication. We look forward to continuing our partnership on future initiatives.",
+    "bodyPreview": "I wanted to personally thank you and your team for the exceptional work on our recent project. The delivery exceeded our expectations in terms of quality, timeline, and communication. We look forward to continuing our partnership on future initiatives.",
     "time": "3:45 PM",
     "date": "1 week ago",
     "unread": false,
@@ -384,7 +384,7 @@
       "email": "admin@company.com"
     },
     "subject": "Scheduled Maintenance - December 8th, 2024",
-    "body": "Scheduled system maintenance will occur on December 8th from 2:00 AM to 6:00 AM EST. During this time, email services and internal applications may be temporarily unavailable. We apologize for any inconvenience and appreciate your patience.",
+    "bodyPreview": "Scheduled system maintenance will occur on December 8th from 2:00 AM to 6:00 AM EST. During this time, email services and internal applications may be temporarily unavailable. We apologize for any inconvenience and appreciate your patience.",
     "time": "5:00 PM",
     "date": "1 week ago",
     "unread": true,
@@ -398,7 +398,7 @@
       "email": "anna.kowalski@researchinstitute.org"
     },
     "subject": "Research Collaboration Proposal",
-    "body": "We're conducting groundbreaking research on artificial intelligence applications in healthcare and would like to propose a collaboration with your team. Our preliminary findings show promising results in diagnostic accuracy improvement using machine learning algorithms.",
+    "bodyPreview": "We're conducting groundbreaking research on artificial intelligence applications in healthcare and would like to propose a collaboration with your team. Our preliminary findings show promising results in diagnostic accuracy improvement using machine learning algorithms.",
     "time": "11:30 AM",
     "date": "1 week ago",
     "unread": false,
@@ -412,7 +412,7 @@
       "email": "sales@company.com"
     },
     "subject": "November Sales Report - Record Breaking Month",
-    "body": "November 2024 was our best sales month ever! We achieved 127% of our monthly target with $2.3M in revenue. The enterprise segment showed particularly strong growth at 45% month-over-month. Congratulations to the entire sales team!",
+    "bodyPreview": "November 2024 was our best sales month ever! We achieved 127% of our monthly target with $2.3M in revenue. The enterprise segment showed particularly strong growth at 45% month-over-month. Congratulations to the entire sales team!",
     "time": "9:45 AM",
     "date": "1 week ago",
     "unread": true,
@@ -426,7 +426,7 @@
       "email": "thomas.anderson@techconsulting.com"
     },
     "subject": "Cloud Migration Strategy - Phase 2 Planning",
-    "body": "Phase 1 of our cloud migration is complete and successful. We're now ready to begin planning Phase 2, which includes migrating our core business applications and databases. I'd like to schedule a planning session for next week to discuss timeline and resource allocation.",
+    "bodyPreview": "Phase 1 of our cloud migration is complete and successful. We're now ready to begin planning Phase 2, which includes migrating our core business applications and databases. I'd like to schedule a planning session for next week to discuss timeline and resource allocation.",
     "time": "2:15 PM",
     "date": "1 week ago",
     "unread": false,
@@ -440,7 +440,7 @@
       "email": "success@company.com"
     },
     "subject": "Customer Satisfaction Survey Results",
-    "body": "Our Q4 customer satisfaction survey results are in! Overall satisfaction score: 4.7/5.0, with 92% of customers rating our support as 'excellent' or 'very good'. Areas for improvement include response time and self-service options. Detailed analysis attached.",
+    "bodyPreview": "Our Q4 customer satisfaction survey results are in! Overall satisfaction score: 4.7/5.0, with 92% of customers rating our support as 'excellent' or 'very good'. Areas for improvement include response time and self-service options. Detailed analysis attached.",
     "time": "8:30 AM",
     "date": "1 week ago",
     "unread": true,
@@ -454,7 +454,7 @@
       "email": "linda.davis@marketingagency.com"
     },
     "subject": "Holiday Campaign Performance - Mid-Campaign Update",
-    "body": "Our holiday marketing campaign is performing exceptionally well. Current metrics: 23% increase in website traffic, 18% improvement in conversion rate, and 31% growth in social media engagement. The video content is particularly resonating with our target audience.",
+    "bodyPreview": "Our holiday marketing campaign is performing exceptionally well. Current metrics: 23% increase in website traffic, 18% improvement in conversion rate, and 31% growth in social media engagement. The video content is particularly resonating with our target audience.",
     "time": "4:00 PM",
     "date": "1 week ago",
     "unread": false,
@@ -468,7 +468,7 @@
       "email": "product@company.com"
     },
     "subject": "Feature Release Notes - Version 3.2.1",
-    "body": "Version 3.2.1 is now live! New features include: enhanced search functionality, improved mobile responsiveness, and advanced analytics dashboard. Bug fixes include resolved login issues and improved page load times. Full release notes attached.",
+    "bodyPreview": "Version 3.2.1 is now live! New features include: enhanced search functionality, improved mobile responsiveness, and advanced analytics dashboard. Bug fixes include resolved login issues and improved page load times. Full release notes attached.",
     "time": "12:00 PM",
     "date": "1 week ago",
     "unread": true,
@@ -482,7 +482,7 @@
       "email": "ryan.murphy@venturecapital.com"
     },
     "subject": "Investment Opportunity - Series B Funding",
-    "body": "We're impressed with your company's growth trajectory and would like to discuss a potential Series B investment. Our fund specializes in B2B SaaS companies and we believe there's strong alignment with your business model and our investment thesis.",
+    "bodyPreview": "We're impressed with your company's growth trajectory and would like to discuss a potential Series B investment. Our fund specializes in B2B SaaS companies and we believe there's strong alignment with your business model and our investment thesis.",
     "time": "10:30 AM",
     "date": "2 weeks ago",
     "unread": false,
@@ -496,7 +496,7 @@
       "email": "qa@company.com"
     },
     "subject": "Testing Report - Mobile App Version 2.1",
-    "body": "QA testing for mobile app version 2.1 is complete. We identified and resolved 12 minor bugs and 2 critical issues. All functionality tests passed successfully. The app is ready for production deployment pending final approval from the product team.",
+    "bodyPreview": "QA testing for mobile app version 2.1 is complete. We identified and resolved 12 minor bugs and 2 critical issues. All functionality tests passed successfully. The app is ready for production deployment pending final approval from the product team.",
     "time": "3:30 PM",
     "date": "2 weeks ago",
     "unread": true,
@@ -510,7 +510,7 @@
       "email": "michelle.taylor@eventplanning.com"
     },
     "subject": "Company Holiday Party - December 20th Details",
-    "body": "The annual company holiday party is scheduled for December 20th at the Grand Ballroom. Cocktail hour begins at 6:00 PM, followed by dinner and awards ceremony. Please RSVP by December 15th and indicate any dietary restrictions. Looking forward to celebrating with everyone!",
+    "bodyPreview": "The annual company holiday party is scheduled for December 20th at the Grand Ballroom. Cocktail hour begins at 6:00 PM, followed by dinner and awards ceremony. Please RSVP by December 15th and indicate any dietary restrictions. Looking forward to celebrating with everyone!",
     "time": "1:45 PM",
     "date": "2 weeks ago",
     "unread": false,
@@ -524,7 +524,7 @@
       "email": "analytics@company.com"
     },
     "subject": "Monthly Analytics Report - User Engagement Insights",
-    "body": "November analytics show strong user engagement trends. Daily active users increased by 22%, average session duration improved by 15%, and feature adoption rates are up across all user segments. The new onboarding flow is showing positive impact on user retention.",
+    "bodyPreview": "November analytics show strong user engagement trends. Daily active users increased by 22%, average session duration improved by 15%, and feature adoption rates are up across all user segments. The new onboarding flow is showing positive impact on user retention.",
     "time": "9:20 AM",
     "date": "2 weeks ago",
     "unread": true,
@@ -538,7 +538,7 @@
       "email": "peter.johnson@suppliercompany.com"
     },
     "subject": "Supply Chain Update - Q1 2025 Capacity Planning",
-    "body": "We're planning our Q1 2025 production capacity and wanted to confirm your projected order volumes. Based on your growth trends, we're preparing to increase our manufacturing capacity by 30% to meet anticipated demand. Please confirm your Q1 forecasts.",
+    "bodyPreview": "We're planning our Q1 2025 production capacity and wanted to confirm your projected order volumes. Based on your growth trends, we're preparing to increase our manufacturing capacity by 30% to meet anticipated demand. Please confirm your Q1 forecasts.",
     "time": "2:10 PM",
     "date": "2 weeks ago",
     "unread": false,
@@ -552,7 +552,7 @@
       "email": "legal@company.com"
     },
     "subject": "Contract Templates Update - New Standard Terms",
-    "body": "We've updated our standard contract templates to include new terms for data protection compliance and intellectual property rights. All new contracts should use the updated templates effective immediately. Training session scheduled for December 12th.",
+    "bodyPreview": "We've updated our standard contract templates to include new terms for data protection compliance and intellectual property rights. All new contracts should use the updated templates effective immediately. Training session scheduled for December 12th.",
     "time": "11:00 AM",
     "date": "2 weeks ago",
     "unread": true,
@@ -566,7 +566,7 @@
       "email": "grace.kim@designfirm.co"
     },
     "subject": "Brand Refresh Project - Concept Presentation",
-    "body": "I'm excited to present the initial concepts for your brand refresh project. We've developed three distinct creative directions that maintain your core brand values while modernizing the visual identity. The presentation is scheduled for December 10th at 2:00 PM.",
+    "bodyPreview": "I'm excited to present the initial concepts for your brand refresh project. We've developed three distinct creative directions that maintain your core brand values while modernizing the visual identity. The presentation is scheduled for December 10th at 2:00 PM.",
     "time": "4:45 PM",
     "date": "2 weeks ago",
     "unread": false,
@@ -580,7 +580,7 @@
       "email": "operations@company.com"
     },
     "subject": "Office Relocation Update - Timeline and Logistics",
-    "body": "The office relocation project is progressing on schedule. Moving date confirmed for January 15th, 2025. IT infrastructure setup begins January 8th, and employee workstation assignments will be distributed next week. Temporary parking arrangements are being finalized.",
+    "bodyPreview": "The office relocation project is progressing on schedule. Moving date confirmed for January 15th, 2025. IT infrastructure setup begins January 8th, and employee workstation assignments will be distributed next week. Temporary parking arrangements are being finalized.",
     "time": "8:15 AM",
     "date": "2 weeks ago",
     "unread": true,
@@ -594,7 +594,7 @@
       "email": "mark.thompson@clientservices.com"
     },
     "subject": "Client Onboarding - New Enterprise Account",
-    "body": "We've successfully onboarded TechGlobal Inc. as our newest enterprise client. The implementation timeline is 6 weeks with go-live scheduled for January 20th. The account represents $500K in annual recurring revenue and includes 2,500 user licenses.",
+    "bodyPreview": "We've successfully onboarded TechGlobal Inc. as our newest enterprise client. The implementation timeline is 6 weeks with go-live scheduled for January 20th. The account represents $500K in annual recurring revenue and includes 2,500 user licenses.",
     "time": "1:30 PM",
     "date": "2 weeks ago",
     "unread": false,
@@ -608,7 +608,7 @@
       "email": "compliance@company.com"
     },
     "subject": "Annual Compliance Audit - Documentation Required",
-    "body": "The annual compliance audit begins December 16th. Please prepare all required documentation including security protocols, data handling procedures, and employee training records. The audit team will need access to systems and personnel for interviews.",
+    "bodyPreview": "The annual compliance audit begins December 16th. Please prepare all required documentation including security protocols, data handling procedures, and employee training records. The audit team will need access to systems and personnel for interviews.",
     "time": "10:45 AM",
     "date": "2 weeks ago",
     "unread": true,
@@ -622,7 +622,7 @@
       "email": "samantha.lee@partnercompany.com"
     },
     "subject": "Joint Venture Proposal - Market Expansion",
-    "body": "Following our successful collaboration this year, we'd like to propose a joint venture for expanding into the European market. Our combined expertise and resources could capture significant market share in the region. Let's schedule a meeting to discuss the opportunity.",
+    "bodyPreview": "Following our successful collaboration this year, we'd like to propose a joint venture for expanding into the European market. Our combined expertise and resources could capture significant market share in the region. Let's schedule a meeting to discuss the opportunity.",
     "time": "3:15 PM",
     "date": "2 weeks ago",
     "unread": false,
@@ -636,7 +636,7 @@
       "email": "dev@company.com"
     },
     "subject": "Code Review - Security Enhancement Implementation",
-    "body": "The security enhancement implementation is ready for code review. Changes include improved authentication mechanisms, enhanced data encryption, and updated access control systems. Please review the pull request and provide feedback by end of week.",
+    "bodyPreview": "The security enhancement implementation is ready for code review. Changes include improved authentication mechanisms, enhanced data encryption, and updated access control systems. Please review the pull request and provide feedback by end of week.",
     "time": "5:20 PM",
     "date": "2 weeks ago",
     "unread": true,
@@ -650,7 +650,7 @@
       "email": "info@techindustryassoc.org"
     },
     "subject": "Annual Conference 2025 - Call for Speakers",
-    "body": "The Tech Industry Association's Annual Conference 2025 is accepting speaker applications. The theme is 'Innovation in the Age of AI' and we're looking for thought leaders to share insights on emerging technologies, industry trends, and future predictions.",
+    "bodyPreview": "The Tech Industry Association's Annual Conference 2025 is accepting speaker applications. The theme is 'Innovation in the Age of AI' and we're looking for thought leaders to share insights on emerging technologies, industry trends, and future predictions.",
     "time": "7:00 AM",
     "date": "3 weeks ago",
     "unread": false,
@@ -664,7 +664,7 @@
       "email": "brian.wilson@consultingfirm.com"
     },
     "subject": "Strategic Planning Session - 2025 Roadmap",
-    "body": "Let's schedule our strategic planning session for 2025 roadmap development. I recommend a two-day offsite meeting in January to thoroughly review market opportunities, competitive landscape, and resource allocation for the upcoming year.",
+    "bodyPreview": "Let's schedule our strategic planning session for 2025 roadmap development. I recommend a two-day offsite meeting in January to thoroughly review market opportunities, competitive landscape, and resource allocation for the upcoming year.",
     "time": "2:30 PM",
     "date": "3 weeks ago",
     "unread": true,
@@ -678,7 +678,7 @@
       "email": "feedback@company.com"
     },
     "subject": "Feature Request Summary - November 2024",
-    "body": "November feature requests summary: 47 requests received, top requests include dark mode (23 votes), advanced filtering (19 votes), and mobile app improvements (15 votes). The product team is evaluating these requests for inclusion in the Q1 2025 roadmap.",
+    "bodyPreview": "November feature requests summary: 47 requests received, top requests include dark mode (23 votes), advanced filtering (19 votes), and mobile app improvements (15 votes). The product team is evaluating these requests for inclusion in the Q1 2025 roadmap.",
     "time": "11:15 AM",
     "date": "3 weeks ago",
     "unread": false,
@@ -692,7 +692,7 @@
       "email": "nicole.rodriguez@mediapartner.com"
     },
     "subject": "Press Release - Partnership Announcement",
-    "body": "The press release for our strategic partnership announcement is ready for your review. The release highlights the collaboration benefits, market impact, and future plans. We're targeting publication on December 15th across major industry publications.",
+    "bodyPreview": "The press release for our strategic partnership announcement is ready for your review. The release highlights the collaboration benefits, market impact, and future plans. We're targeting publication on December 15th across major industry publications.",
     "time": "4:00 PM",
     "date": "3 weeks ago",
     "unread": true,
@@ -706,7 +706,7 @@
       "email": "facilities@company.com"
     },
     "subject": "Holiday Office Hours - December Schedule",
-    "body": "Holiday office hours for December: Regular hours until December 23rd, closed December 24th-26th for Christmas holiday, limited staff December 27th-30th, closed January 1st for New Year's Day. Building security and emergency contacts remain available 24/7.",
+    "bodyPreview": "Holiday office hours for December: Regular hours until December 23rd, closed December 24th-26th for Christmas holiday, limited staff December 27th-30th, closed January 1st for New Year's Day. Building security and emergency contacts remain available 24/7.",
     "time": "9:30 AM",
     "date": "3 weeks ago",
     "unread": false,
@@ -720,7 +720,7 @@
       "email": "alex.turner@innovationlab.com"
     },
     "subject": "Innovation Workshop - Emerging Technologies",
-    "body": "We're hosting an innovation workshop focused on emerging technologies and their business applications. Topics include AI integration, blockchain applications, and IoT solutions. The workshop is scheduled for December 18th and includes hands-on demonstrations.",
+    "bodyPreview": "We're hosting an innovation workshop focused on emerging technologies and their business applications. Topics include AI integration, blockchain applications, and IoT solutions. The workshop is scheduled for December 18th and includes hands-on demonstrations.",
     "time": "1:45 PM",
     "date": "3 weeks ago",
     "unread": true,
@@ -734,7 +734,7 @@
       "email": "procurement@company.com"
     },
     "subject": "Vendor Evaluation - Software License Renewal",
-    "body": "Annual software license renewals are due in January. We're evaluating current vendors and exploring alternatives to optimize costs and functionality. Please provide feedback on current software tools and any recommendations for improvements or replacements.",
+    "bodyPreview": "Annual software license renewals are due in January. We're evaluating current vendors and exploring alternatives to optimize costs and functionality. Please provide feedback on current software tools and any recommendations for improvements or replacements.",
     "time": "10:20 AM",
     "date": "3 weeks ago",
     "unread": false,
@@ -748,7 +748,7 @@
       "email": "diana.chen@researchpartner.org"
     },
     "subject": "Research Publication - Co-Authorship Invitation",
-    "body": "We're preparing a research publication on AI applications in business automation and would like to invite you as a co-author. Your expertise and recent project results would add significant value to the paper. The submission deadline is February 15th, 2025.",
+    "bodyPreview": "We're preparing a research publication on AI applications in business automation and would like to invite you as a co-author. Your expertise and recent project results would add significant value to the paper. The submission deadline is February 15th, 2025.",
     "time": "3:50 PM",
     "date": "3 weeks ago",
     "unread": true,
@@ -762,7 +762,7 @@
       "email": "bi@company.com"
     },
     "subject": "Dashboard Update - Real-Time Analytics Available",
-    "body": "The new real-time analytics dashboard is now available! Features include live sales metrics, customer engagement tracking, and performance KPIs. Access the dashboard through the business intelligence portal. Training sessions available upon request.",
+    "bodyPreview": "The new real-time analytics dashboard is now available! Features include live sales metrics, customer engagement tracking, and performance KPIs. Access the dashboard through the business intelligence portal. Training sessions available upon request.",
     "time": "8:45 AM",
     "date": "3 weeks ago",
     "unread": false,
@@ -776,7 +776,7 @@
       "email": "christopher.davis@techvendor.com"
     },
     "subject": "Product Demo - Next Generation Platform",
-    "body": "I'd like to schedule a demo of our next-generation platform that includes advanced AI capabilities, improved user interface, and enhanced security features. The platform could significantly improve your operational efficiency and reduce costs.",
+    "bodyPreview": "I'd like to schedule a demo of our next-generation platform that includes advanced AI capabilities, improved user interface, and enhanced security features. The platform could significantly improve your operational efficiency and reduce costs.",
     "time": "2:25 PM",
     "date": "3 weeks ago",
     "unread": true,
@@ -790,7 +790,7 @@
       "email": "recruiting@company.com"
     },
     "subject": "Hiring Update - Q4 2024 Recruitment Summary",
-    "body": "Q4 2024 recruitment summary: 15 positions filled, 8 offers extended, 12 candidates in final interview stages. Key hires include Senior Data Scientist, Product Marketing Manager, and Lead DevOps Engineer. Q1 2025 hiring plan includes 20 additional positions.",
+    "bodyPreview": "Q4 2024 recruitment summary: 15 positions filled, 8 offers extended, 12 candidates in final interview stages. Key hires include Senior Data Scientist, Product Marketing Manager, and Lead DevOps Engineer. Q1 2025 hiring plan includes 20 additional positions.",
     "time": "11:40 AM",
     "date": "3 weeks ago",
     "unread": false,
@@ -804,7 +804,7 @@
       "email": "melissa.wong@digitalagency.com"
     },
     "subject": "Website Redesign - User Experience Improvements",
-    "body": "The website redesign project is progressing well. User experience improvements include simplified navigation, faster page load times, and mobile-first design approach. Beta testing begins next week with selected user groups. Launch targeted for January 2025.",
+    "bodyPreview": "The website redesign project is progressing well. User experience improvements include simplified navigation, faster page load times, and mobile-first design approach. Beta testing begins next week with selected user groups. Launch targeted for January 2025.",
     "time": "4:15 PM",
     "date": "3 weeks ago",
     "unread": true,
@@ -818,7 +818,7 @@
       "email": "risk@company.com"
     },
     "subject": "Risk Assessment Report - Cybersecurity Evaluation",
-    "body": "The annual cybersecurity risk assessment is complete. Overall risk level: Medium. Key recommendations include implementing multi-factor authentication, updating firewall configurations, and enhancing employee security training. Detailed report and action plan attached.",
+    "bodyPreview": "The annual cybersecurity risk assessment is complete. Overall risk level: Medium. Key recommendations include implementing multi-factor authentication, updating firewall configurations, and enhancing employee security training. Detailed report and action plan attached.",
     "time": "9:10 AM",
     "date": "4 weeks ago",
     "unread": false,
@@ -832,7 +832,7 @@
       "email": "jonathan.miller@industrypartner.com"
     },
     "subject": "Industry Collaboration - Standards Development",
-    "body": "The industry standards committee is developing new guidelines for AI ethics and data privacy. Your company's expertise would be valuable in shaping these standards. The next committee meeting is December 20th, and we'd welcome your participation.",
+    "bodyPreview": "The industry standards committee is developing new guidelines for AI ethics and data privacy. Your company's expertise would be valuable in shaping these standards. The next committee meeting is December 20th, and we'd welcome your participation.",
     "time": "1:55 PM",
     "date": "4 weeks ago",
     "unread": true,
@@ -846,7 +846,7 @@
       "email": "training@company.com"
     },
     "subject": "Professional Development - 2025 Training Calendar",
-    "body": "The 2025 professional development training calendar is now available. Courses include leadership development, technical skills advancement, and industry certifications. Early bird registration opens December 15th with 20% discount for the first 50 registrants.",
+    "bodyPreview": "The 2025 professional development training calendar is now available. Courses include leadership development, technical skills advancement, and industry certifications. Early bird registration opens December 15th with 20% discount for the first 50 registrants.",
     "time": "10:30 AM",
     "date": "4 weeks ago",
     "unread": false,
@@ -860,7 +860,7 @@
       "email": "patricia.brown@clientcompany.net"
     },
     "subject": "Project Milestone - Phase 3 Completion",
-    "body": "Congratulations on completing Phase 3 of our project ahead of schedule! The deliverables exceed our expectations in terms of quality and functionality. We're excited to move forward with Phase 4 and the final implementation stage.",
+    "bodyPreview": "Congratulations on completing Phase 3 of our project ahead of schedule! The deliverables exceed our expectations in terms of quality and functionality. We're excited to move forward with Phase 4 and the final implementation stage.",
     "time": "3:20 PM",
     "date": "4 weeks ago",
     "unread": true,
@@ -874,7 +874,7 @@
       "email": "sustainability@company.com"
     },
     "subject": "Green Initiative - Carbon Footprint Reduction Plan",
-    "body": "Our carbon footprint reduction plan for 2025 includes transitioning to renewable energy, implementing remote work policies, and partnering with eco-friendly suppliers. The initiative aims to reduce our carbon footprint by 40% over the next two years.",
+    "bodyPreview": "Our carbon footprint reduction plan for 2025 includes transitioning to renewable energy, implementing remote work policies, and partnering with eco-friendly suppliers. The initiative aims to reduce our carbon footprint by 40% over the next two years.",
     "time": "8:25 AM",
     "date": "4 weeks ago",
     "unread": false,
@@ -888,7 +888,7 @@
       "email": "steven.garcia@techsupport.com"
     },
     "subject": "System Upgrade - Performance Optimization Complete",
-    "body": "The system performance optimization is complete. Results include 35% faster response times, 50% reduction in server load, and improved scalability for handling peak traffic. All systems are running smoothly and monitoring shows excellent performance metrics.",
+    "bodyPreview": "The system performance optimization is complete. Results include 35% faster response times, 50% reduction in server load, and improved scalability for handling peak traffic. All systems are running smoothly and monitoring shows excellent performance metrics.",
     "time": "2:40 PM",
     "date": "4 weeks ago",
     "unread": true,
@@ -902,7 +902,7 @@
       "email": "community@company.com"
     },
     "subject": "Community Outreach - Local STEM Education Partnership",
-    "body": "We're launching a community outreach program partnering with local schools to promote STEM education. The program includes mentorship opportunities, coding workshops, and scholarship funding. Volunteer sign-up begins next week for interested employees.",
+    "bodyPreview": "We're launching a community outreach program partnering with local schools to promote STEM education. The program includes mentorship opportunities, coding workshops, and scholarship funding. Volunteer sign-up begins next week for interested employees.",
     "time": "11:05 AM",
     "date": "4 weeks ago",
     "unread": false,
@@ -916,7 +916,7 @@
       "email": "rebecca.johnson@marketresearch.com"
     },
     "subject": "Market Research - Consumer Behavior Analysis",
-    "body": "The consumer behavior analysis for your target market is complete. Key insights include shifting preferences toward sustainable products, increased demand for personalized experiences, and growing importance of social responsibility in purchasing decisions.",
+    "bodyPreview": "The consumer behavior analysis for your target market is complete. Key insights include shifting preferences toward sustainable products, increased demand for personalized experiences, and growing importance of social responsibility in purchasing decisions.",
     "time": "4:30 PM",
     "date": "4 weeks ago",
     "unread": true,
@@ -930,7 +930,7 @@
       "email": "innovation@company.com"
     },
     "subject": "Innovation Challenge - Employee Ideas Competition",
-    "body": "The annual employee innovation challenge is now open for submissions! This year's theme is 'Future of Work' and we're looking for creative ideas to improve productivity, collaboration, and employee experience. Submission deadline: January 15th, 2025.",
+    "bodyPreview": "The annual employee innovation challenge is now open for submissions! This year's theme is 'Future of Work' and we're looking for creative ideas to improve productivity, collaboration, and employee experience. Submission deadline: January 15th, 2025.",
     "time": "9:50 AM",
     "date": "1 month ago",
     "unread": false,
@@ -944,7 +944,7 @@
       "email": "andrew.wilson@suppliernetwork.com"
     },
     "subject": "Supply Chain Optimization - Cost Reduction Opportunities",
-    "body": "We've identified several cost reduction opportunities in your supply chain through route optimization, bulk purchasing agreements, and alternative supplier partnerships. The proposed changes could reduce logistics costs by 15-20% while maintaining quality standards.",
+    "bodyPreview": "We've identified several cost reduction opportunities in your supply chain through route optimization, bulk purchasing agreements, and alternative supplier partnerships. The proposed changes could reduce logistics costs by 15-20% while maintaining quality standards.",
     "time": "1:15 PM",
     "date": "1 month ago",
     "unread": true,
@@ -958,7 +958,7 @@
       "email": "qc@company.com"
     },
     "subject": "Quality Metrics - November 2024 Performance Report",
-    "body": "November quality metrics show excellent performance across all product lines. Defect rate: 0.3% (target: <0.5%), customer satisfaction: 96% (target: >95%), and on-time delivery: 98.5% (target: >98%). Congratulations to all teams for maintaining high standards.",
+    "bodyPreview": "November quality metrics show excellent performance across all product lines. Defect rate: 0.3% (target: <0.5%), customer satisfaction: 96% (target: >95%), and on-time delivery: 98.5% (target: >98%). Congratulations to all teams for maintaining high standards.",
     "time": "10:25 AM",
     "date": "1 month ago",
     "unread": false,
@@ -972,7 +972,7 @@
       "email": "victoria.martinez@brandagency.com"
     },
     "subject": "Brand Awareness Campaign - Results Analysis",
-    "body": "The brand awareness campaign exceeded all expectations! Results include 45% increase in brand recognition, 32% growth in social media followers, and 28% improvement in brand sentiment scores. The campaign reached 2.3 million people across all channels.",
+    "bodyPreview": "The brand awareness campaign exceeded all expectations! Results include 45% increase in brand recognition, 32% growth in social media followers, and 28% improvement in brand sentiment scores. The campaign reached 2.3 million people across all channels.",
     "time": "3:45 PM",
     "date": "1 month ago",
     "unread": true,
@@ -986,7 +986,7 @@
       "email": "regulatory@company.com"
     },
     "subject": "Compliance Update - New Industry Regulations",
-    "body": "New industry regulations take effect January 1st, 2025. Key changes include enhanced data protection requirements, updated reporting standards, and new certification processes. We've developed a compliance roadmap to ensure full adherence by the deadline.",
+    "bodyPreview": "New industry regulations take effect January 1st, 2025. Key changes include enhanced data protection requirements, updated reporting standards, and new certification processes. We've developed a compliance roadmap to ensure full adherence by the deadline.",
     "time": "8:40 AM",
     "date": "1 month ago",
     "unread": false,
@@ -1000,7 +1000,7 @@
       "email": "timothy.lee@techintegrator.com"
     },
     "subject": "Integration Project - API Development Complete",
-    "body": "The API development for the integration project is complete and ready for testing. The new APIs provide seamless data exchange between systems, improved performance, and enhanced security features. Documentation and testing guidelines are attached.",
+    "bodyPreview": "The API development for the integration project is complete and ready for testing. The new APIs provide seamless data exchange between systems, improved performance, and enhanced security features. Documentation and testing guidelines are attached.",
     "time": "2:20 PM",
     "date": "1 month ago",
     "unread": true,
@@ -1014,7 +1014,7 @@
       "email": "wellness@company.com"
     },
     "subject": "Wellness Program - Mental Health Resources",
-    "body": "We're expanding our employee wellness program to include comprehensive mental health resources. New offerings include counseling services, stress management workshops, and mindfulness training. All services are confidential and available at no cost to employees.",
+    "bodyPreview": "We're expanding our employee wellness program to include comprehensive mental health resources. New offerings include counseling services, stress management workshops, and mindfulness training. All services are confidential and available at no cost to employees.",
     "time": "11:30 AM",
     "date": "1 month ago",
     "unread": false,
@@ -1028,7 +1028,7 @@
       "email": "catherine.white@eventmanagement.com"
     },
     "subject": "Corporate Event - Annual Awards Ceremony Planning",
-    "body": "Planning for the annual awards ceremony is underway. The event will recognize outstanding employee achievements, celebrate company milestones, and announce 2025 strategic initiatives. Venue booking confirmed for February 28th at the Convention Center.",
+    "bodyPreview": "Planning for the annual awards ceremony is underway. The event will recognize outstanding employee achievements, celebrate company milestones, and announce 2025 strategic initiatives. Venue booking confirmed for February 28th at the Convention Center.",
     "time": "4:10 PM",
     "date": "1 month ago",
     "unread": true,
@@ -1042,7 +1042,7 @@
       "email": "bizdev@company.com"
     },
     "subject": "Partnership Opportunity - Strategic Alliance Proposal",
-    "body": "We've identified a strategic alliance opportunity with a leading technology company that could expand our market reach and enhance our product offerings. The partnership would include joint product development, shared marketing initiatives, and cross-selling opportunities.",
+    "bodyPreview": "We've identified a strategic alliance opportunity with a leading technology company that could expand our market reach and enhance our product offerings. The partnership would include joint product development, shared marketing initiatives, and cross-selling opportunities.",
     "time": "9:15 AM",
     "date": "1 month ago",
     "unread": false,
@@ -1056,7 +1056,7 @@
       "email": "nathan.rodriguez@cloudprovider.com"
     },
     "subject": "Cloud Infrastructure - Scalability Enhancement",
-    "body": "The cloud infrastructure scalability enhancement is complete. New features include auto-scaling capabilities, improved load balancing, and enhanced disaster recovery options. The infrastructure can now handle 300% traffic spikes without performance degradation.",
+    "bodyPreview": "The cloud infrastructure scalability enhancement is complete. New features include auto-scaling capabilities, improved load balancing, and enhanced disaster recovery options. The infrastructure can now handle 300% traffic spikes without performance degradation.",
     "time": "1:50 PM",
     "date": "1 month ago",
     "unread": true,
@@ -1070,7 +1070,7 @@
       "email": "ip@company.com"
     },
     "subject": "Patent Application - AI Algorithm Protection",
-    "body": "The patent application for our proprietary AI algorithm has been filed with the USPTO. The application covers the unique machine learning approach we developed for predictive analytics. Patent approval timeline is estimated at 18-24 months.",
+    "bodyPreview": "The patent application for our proprietary AI algorithm has been filed with the USPTO. The application covers the unique machine learning approach we developed for predictive analytics. Patent approval timeline is estimated at 18-24 months.",
     "time": "10:35 AM",
     "date": "1 month ago",
     "unread": false,
@@ -1084,7 +1084,7 @@
       "email": "olivia.thompson@userexperience.com"
     },
     "subject": "UX Research - User Journey Optimization",
-    "body": "The user journey optimization research is complete. Key findings include friction points in the onboarding process, opportunities for personalization, and recommendations for improving conversion rates. Implementation of changes could increase user retention by 25%.",
+    "bodyPreview": "The user journey optimization research is complete. Key findings include friction points in the onboarding process, opportunities for personalization, and recommendations for improving conversion rates. Implementation of changes could increase user retention by 25%.",
     "time": "3:25 PM",
     "date": "1 month ago",
     "unread": true,
@@ -1098,7 +1098,7 @@
       "email": "vendors@company.com"
     },
     "subject": "Vendor Performance Review - Q4 2024 Assessment",
-    "body": "Q4 2024 vendor performance review is complete. Top performing vendors maintained 99%+ service levels, while three vendors require performance improvement plans. Contract renewals for 2025 will reflect performance metrics and cost optimization opportunities.",
+    "bodyPreview": "Q4 2024 vendor performance review is complete. Top performing vendors maintained 99%+ service levels, while three vendors require performance improvement plans. Contract renewals for 2025 will reflect performance metrics and cost optimization opportunities.",
     "time": "8:55 AM",
     "date": "1 month ago",
     "unread": false,
@@ -1112,7 +1112,7 @@
       "email": "marcus.johnson@cybersecurity.com"
     },
     "subject": "Security Audit - Penetration Testing Results",
-    "body": "The annual penetration testing is complete with positive results. No critical vulnerabilities were identified, and all medium-risk issues have been addressed. The security posture has improved significantly compared to last year's assessment.",
+    "bodyPreview": "The annual penetration testing is complete with positive results. No critical vulnerabilities were identified, and all medium-risk issues have been addressed. The security posture has improved significantly compared to last year's assessment.",
     "time": "2:05 PM",
     "date": "1 month ago",
     "unread": true,
@@ -1126,7 +1126,7 @@
       "email": "change@company.com"
     },
     "subject": "Organizational Change - Digital Transformation Update",
-    "body": "The digital transformation initiative is progressing successfully. 75% of planned changes have been implemented, employee adoption rates are high, and productivity metrics show positive trends. The remaining phases will be completed by March 2025.",
+    "bodyPreview": "The digital transformation initiative is progressing successfully. 75% of planned changes have been implemented, employee adoption rates are high, and productivity metrics show positive trends. The remaining phases will be completed by March 2025.",
     "time": "11:20 AM",
     "date": "1 month ago",
     "unread": false,
@@ -1140,7 +1140,7 @@
       "email": "isabella.davis@contentcreation.com"
     },
     "subject": "Content Strategy - 2025 Editorial Calendar",
-    "body": "The 2025 editorial calendar is ready for review. The strategy focuses on thought leadership content, customer success stories, and industry trend analysis. Content production will increase by 40% to support our growth objectives and brand positioning goals.",
+    "bodyPreview": "The 2025 editorial calendar is ready for review. The strategy focuses on thought leadership content, customer success stories, and industry trend analysis. Content production will increase by 40% to support our growth objectives and brand positioning goals.",
     "time": "4:40 PM",
     "date": "1 month ago",
     "unread": true,
@@ -1154,7 +1154,7 @@
       "email": "analytics@company.com"
     },
     "subject": "Performance Dashboard - Key Metrics Summary",
-    "body": "November performance dashboard shows strong results across all key metrics. Revenue growth: 18% YoY, customer acquisition cost decreased by 12%, and customer lifetime value increased by 22%. The trends indicate sustainable business growth.",
+    "bodyPreview": "November performance dashboard shows strong results across all key metrics. Revenue growth: 18% YoY, customer acquisition cost decreased by 12%, and customer lifetime value increased by 22%. The trends indicate sustainable business growth.",
     "time": "9:30 AM",
     "date": "1 month ago",
     "unread": false,
@@ -1168,7 +1168,7 @@
       "email": "gregory.wilson@logisticspartner.com"
     },
     "subject": "Logistics Optimization - Delivery Network Expansion",
-    "body": "The delivery network expansion project is complete. New distribution centers in three key markets will reduce delivery times by 30% and shipping costs by 15%. The expanded network can handle 200% increase in order volume.",
+    "bodyPreview": "The delivery network expansion project is complete. New distribution centers in three key markets will reduce delivery times by 30% and shipping costs by 15%. The expanded network can handle 200% increase in order volume.",
     "time": "1:35 PM",
     "date": "1 month ago",
     "unread": true,
@@ -1182,7 +1182,7 @@
       "email": "diversity@company.com"
     },
     "subject": "D&I Initiative - Progress Report and 2025 Goals",
-    "body": "Our diversity and inclusion initiatives have made significant progress in 2024. Leadership diversity increased by 25%, employee resource groups grew to 8 active groups, and inclusion survey scores improved across all categories. 2025 goals include expanding mentorship programs.",
+    "bodyPreview": "Our diversity and inclusion initiatives have made significant progress in 2024. Leadership diversity increased by 25%, employee resource groups grew to 8 active groups, and inclusion survey scores improved across all categories. 2025 goals include expanding mentorship programs.",
     "time": "10:45 AM",
     "date": "1 month ago",
     "unread": false,
@@ -1196,7 +1196,7 @@
       "email": "sophia.martinez@socialimpact.org"
     },
     "subject": "Social Impact Program - Community Partnership Results",
-    "body": "Our community partnership program has achieved remarkable results this year. We've supported 15 local organizations, provided 500 volunteer hours, and contributed $50,000 in donations. The program has significantly enhanced our community presence and employee engagement.",
+    "bodyPreview": "Our community partnership program has achieved remarkable results this year. We've supported 15 local organizations, provided 500 volunteer hours, and contributed $50,000 in donations. The program has significantly enhanced our community presence and employee engagement.",
     "time": "3:15 PM",
     "date": "1 month ago",
     "unread": true,
@@ -1210,7 +1210,7 @@
       "email": "techreview@company.com"
     },
     "subject": "Technology Stack Assessment - Modernization Recommendations",
-    "body": "The annual technology stack assessment is complete. Recommendations include upgrading to cloud-native architecture, implementing microservices, and adopting DevOps practices. The modernization plan would improve scalability, reduce maintenance costs, and enhance security.",
+    "bodyPreview": "The annual technology stack assessment is complete. Recommendations include upgrading to cloud-native architecture, implementing microservices, and adopting DevOps practices. The modernization plan would improve scalability, reduce maintenance costs, and enhance security.",
     "time": "8:20 AM",
     "date": "1 month ago",
     "unread": false,
@@ -1224,7 +1224,7 @@
       "email": "benjamin.clark@financialservices.com"
     },
     "subject": "Financial Planning - 2025 Budget Allocation Strategy",
-    "body": "The 2025 budget allocation strategy prioritizes growth investments, technology upgrades, and talent acquisition. Key allocations include 40% for product development, 25% for marketing and sales, 20% for operations, and 15% for strategic reserves.",
+    "bodyPreview": "The 2025 budget allocation strategy prioritizes growth investments, technology upgrades, and talent acquisition. Key allocations include 40% for product development, 25% for marketing and sales, 20% for operations, and 15% for strategic reserves.",
     "time": "2:50 PM",
     "date": "1 month ago",
     "unread": true,
@@ -1238,7 +1238,7 @@
       "email": "crisis@company.com"
     },
     "subject": "Business Continuity - Disaster Recovery Plan Update",
-    "body": "The disaster recovery plan has been updated to include new scenarios and improved response procedures. Key enhancements include cloud-based backup systems, remote work capabilities, and communication protocols. Annual testing is scheduled for January 2025.",
+    "bodyPreview": "The disaster recovery plan has been updated to include new scenarios and improved response procedures. Key enhancements include cloud-based backup systems, remote work capabilities, and communication protocols. Annual testing is scheduled for January 2025.",
     "time": "11:10 AM",
     "date": "1 month ago",
     "unread": false,
@@ -1252,7 +1252,7 @@
       "email": "charlotte.anderson@publicrelations.com"
     },
     "subject": "Media Coverage - Industry Recognition and Awards",
-    "body": "Our recent industry recognition has generated significant positive media coverage. Featured articles in 12 major publications, 3 podcast interviews, and recognition as 'Company of the Year' by Tech Innovation Magazine. The coverage has increased brand visibility by 60%.",
+    "bodyPreview": "Our recent industry recognition has generated significant positive media coverage. Featured articles in 12 major publications, 3 podcast interviews, and recognition as 'Company of the Year' by Tech Innovation Magazine. The coverage has increased brand visibility by 60%.",
     "time": "4:25 PM",
     "date": "1 month ago",
     "unread": true,
@@ -1266,7 +1266,7 @@
       "email": "knowledge@company.com"
     },
     "subject": "Knowledge Base - Documentation and Training Materials",
-    "body": "The comprehensive knowledge base update is complete. New documentation includes process guides, training materials, and best practices. The searchable database now contains 500+ articles and has improved employee onboarding efficiency by 35%.",
+    "bodyPreview": "The comprehensive knowledge base update is complete. New documentation includes process guides, training materials, and best practices. The searchable database now contains 500+ articles and has improved employee onboarding efficiency by 35%.",
     "time": "9:40 AM",
     "date": "1 month ago",
     "unread": false,
@@ -1280,7 +1280,7 @@
       "email": "william.taylor@automationsolutions.com"
     },
     "subject": "Process Automation - Workflow Optimization Results",
-    "body": "The workflow automation project has delivered exceptional results. Automated processes have reduced manual work by 60%, improved accuracy to 99.8%, and decreased processing time by 45%. The ROI exceeded projections by 30%.",
+    "bodyPreview": "The workflow automation project has delivered exceptional results. Automated processes have reduced manual work by 60%, improved accuracy to 99.8%, and decreased processing time by 45%. The ROI exceeded projections by 30%.",
     "time": "1:25 PM",
     "date": "1 month ago",
     "unread": true,
@@ -1294,7 +1294,7 @@
       "email": "environment@company.com"
     },
     "subject": "Sustainability Report - Environmental Impact Reduction",
-    "body": "Our 2024 sustainability efforts have achieved significant environmental impact reduction. Carbon emissions decreased by 35%, waste reduction of 50%, and renewable energy usage increased to 80%. The company is on track to achieve carbon neutrality by 2026.",
+    "bodyPreview": "Our 2024 sustainability efforts have achieved significant environmental impact reduction. Carbon emissions decreased by 35%, waste reduction of 50%, and renewable energy usage increased to 80%. The company is on track to achieve carbon neutrality by 2026.",
     "time": "10:15 AM",
     "date": "1 month ago",
     "unread": false,
@@ -1308,7 +1308,7 @@
       "email": "zoe.williams@customerinsights.com"
     },
     "subject": "Customer Insights - Behavioral Analytics Report",
-    "body": "The customer behavioral analytics report reveals valuable insights into user preferences and engagement patterns. Key findings include increased mobile usage (75%), preference for self-service options (68%), and demand for personalized experiences (82%).",
+    "bodyPreview": "The customer behavioral analytics report reveals valuable insights into user preferences and engagement patterns. Key findings include increased mobile usage (75%), preference for self-service options (68%), and demand for personalized experiences (82%).",
     "time": "3:35 PM",
     "date": "1 month ago",
     "unread": true,
@@ -1322,7 +1322,7 @@
       "email": "strategy@company.com"
     },
     "subject": "Strategic Review - Market Position and Competitive Analysis",
-    "body": "The strategic review confirms our strong market position with 23% market share growth and competitive advantages in innovation and customer service. Recommendations include expanding into adjacent markets and strengthening our technology leadership position.",
+    "bodyPreview": "The strategic review confirms our strong market position with 23% market share growth and competitive advantages in innovation and customer service. Recommendations include expanding into adjacent markets and strengthening our technology leadership position.",
     "time": "8:50 AM",
     "date": "1 month ago",
     "unread": false,
@@ -1336,7 +1336,7 @@
       "email": "lucas.brown@mobiledevelopment.com"
     },
     "subject": "Mobile App - Version 3.0 Launch Preparation",
-    "body": "Mobile app version 3.0 is ready for launch! New features include AI-powered recommendations, enhanced security, and improved user interface. Beta testing showed 95% user satisfaction and 40% increase in engagement. Launch date confirmed for December 15th.",
+    "bodyPreview": "Mobile app version 3.0 is ready for launch! New features include AI-powered recommendations, enhanced security, and improved user interface. Beta testing showed 95% user satisfaction and 40% increase in engagement. Launch date confirmed for December 15th.",
     "time": "2:15 PM",
     "date": "1 month ago",
     "unread": true,
@@ -1350,7 +1350,7 @@
       "email": "global@company.com"
     },
     "subject": "International Markets - Expansion Strategy Update",
-    "body": "The international expansion strategy is progressing successfully. Market entry into three new countries is planned for Q2 2025, with local partnerships established and regulatory approvals in progress. Projected revenue impact: $5M in first year.",
+    "bodyPreview": "The international expansion strategy is progressing successfully. Market entry into three new countries is planned for Q2 2025, with local partnerships established and regulatory approvals in progress. Projected revenue impact: $5M in first year.",
     "time": "11:55 AM",
     "date": "1 month ago",
     "unread": false,
@@ -1364,7 +1364,7 @@
       "email": "mia.johnson@dataanalytics.com"
     },
     "subject": "Data Analytics - Predictive Modeling Results",
-    "body": "The predictive modeling project has achieved 94% accuracy in forecasting customer behavior and market trends. The models will enable proactive decision-making, optimize resource allocation, and improve customer retention by an estimated 20%.",
+    "bodyPreview": "The predictive modeling project has achieved 94% accuracy in forecasting customer behavior and market trends. The models will enable proactive decision-making, optimize resource allocation, and improve customer retention by an estimated 20%.",
     "time": "4:05 PM",
     "date": "1 month ago",
     "unread": true,
@@ -1378,7 +1378,7 @@
       "email": "lab@company.com"
     },
     "subject": "Research Project - Breakthrough Technology Development",
-    "body": "Our research lab has achieved a breakthrough in quantum computing applications for business optimization. The technology could revolutionize data processing speeds and complex problem-solving capabilities. Patent applications are being prepared for the innovations.",
+    "bodyPreview": "Our research lab has achieved a breakthrough in quantum computing applications for business optimization. The technology could revolutionize data processing speeds and complex problem-solving capabilities. Patent applications are being prepared for the innovations.",
     "time": "9:25 AM",
     "date": "1 month ago",
     "unread": false,
@@ -1392,7 +1392,7 @@
       "email": "ethan.davis@futuretechnology.com"
     },
     "subject": "Future Technology - Partnership and Innovation Opportunities",
-    "body": "We're excited to explore partnership opportunities that combine our expertise in emerging technologies with your market leadership. Together, we could develop next-generation solutions that transform industries and create new market opportunities.",
+    "bodyPreview": "We're excited to explore partnership opportunities that combine our expertise in emerging technologies with your market leadership. Together, we could develop next-generation solutions that transform industries and create new market opportunities.",
     "time": "1:40 PM",
     "date": "1 month ago",
     "unread": true,

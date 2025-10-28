@@ -50,6 +50,7 @@ export async function middleware(req: NextRequest) {
 
 export const config = {
     matcher: [
+        "/",
         "/mails",
         "/api/mails",
         "/api/auth/:path*",  // covers auth routes, still filtered above
