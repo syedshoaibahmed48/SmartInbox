@@ -4,20 +4,11 @@ services:
     container_name: redis_server
     ports:
       - "6379:6379"
-    volumes:
-      - redis_data:/data
     restart: unless-stopped
 
   llm:
-    build: ./llm       # point to your LLM directory with Dockerfile
+    build: ./llm
     container_name: llm_server
     ports:
-      - "11434:11434"
+      - "8080:8080"
     restart: unless-stopped
-    volumes:
-      - ollama-data:/root/.ollama   # persist Ollama data/models
-    
-
-volumes:
-  redis_data:
-  ollama-data:

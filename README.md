@@ -1,11 +1,11 @@
 # SmartInbox
 
-A securely interact with your emails through a simple AI chat interface. 
+Securely interact with your emails through a simple AI chat interface. 
 
 ---
 
 ## Overview
-Smart iBox reads your emails through authorized integrations and provides an interactive chat interface where you can:
+Smart Inbox reads your emails and provides an interactive chat interface where you can:
 - Ask questions about your inbox.
 - Summarize messages.
 - Search or filter conversations.
@@ -17,6 +17,7 @@ Smart iBox reads your emails through authorized integrations and provides an int
 - Nextjs: Frontend & Proxy
 - Fast API: Backend
 - Redis: temporary storage
+- llama.cpp: llm inference
 
 ---
 

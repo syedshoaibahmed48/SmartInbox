@@ -22,7 +22,7 @@ r = create_redis_client()
 
 def is_valid_session(sid: str) -> bool:
     if r.exists(sid) == 1:
-        r.expire(sid, 1, gt=False) # Extend expiry
+        r.expire(sid, 600, gt=False) # Extend expiry
         return True
     else:
         return False
