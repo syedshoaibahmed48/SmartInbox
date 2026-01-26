@@ -10,6 +10,7 @@ from core.errors import http_exception_handler, validation_exception_handler
 from services.sid_utils import is_valid_encrypted_sid
 from api.auth import router as auth_router
 from api.mails import router as mails_router
+from api.chat import router as chat_router
 
 
 
@@ -46,6 +47,7 @@ async def api_key_middleware(request, call_next):
 # Register routes
 app.include_router(auth_router, prefix="/auth", tags=["auth"])
 app.include_router(mails_router, prefix="/mails", tags=["mails"])
+app.include_router(chat_router, prefix="/chat", tags=["chat"])
 
 # Register error handlers
 app.add_exception_handler(RequestValidationError, validation_exception_handler)

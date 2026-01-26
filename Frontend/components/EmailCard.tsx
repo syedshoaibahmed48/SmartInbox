@@ -1,12 +1,16 @@
 import { Email } from "@/lib/types";
 import { Card, CardContent } from "./ui/card";
-import { Calendar, Paperclip } from "lucide-react";
+import { Calendar } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 export default function EmailCard({ email }: { email: Email }) {
+    const router = useRouter();
+
     return (
       <Card
         key={email.id}
         className="group cursor-pointer transition-all duration-200 hover:shadow-2xl hover:scale-y-105 border border-gray-200 hover:border-gray-300"
+        onClick={() => router.push('/mails/' + email.threadId)}
       >
         <CardContent className="px-4">
           <div className="space-y-1">

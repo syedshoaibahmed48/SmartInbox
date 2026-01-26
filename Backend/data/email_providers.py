@@ -26,7 +26,8 @@ Email_Providers: Dict[str, EmailProviderConfig] = {
             prompt="consent"
         ).model_dump(),
         get_profile=lambda access_token: get_google_profile(access_token),
-        get_mails=lambda access_token, count, filter: get_google_mails(access_token, count, filter)
+        get_mails=lambda access_token, count, filter: get_google_mails(access_token, count, filter),
+        get_thread=lambda access_token, thread_id: get_gmail_thread(access_token, thread_id)
     ),
     "microsoft": EmailProviderConfig(
         domains=["outlook.com", "hotmail.com", "live.com"],
@@ -42,7 +43,8 @@ Email_Providers: Dict[str, EmailProviderConfig] = {
             scope="https://graph.microsoft.com/User.Read Mail.Read offline_access"
         ).model_dump(),
         get_profile=lambda access_token: get_microsoft_profile(access_token),
-        get_mails=lambda access_token, count, filter: get_micosoft_mails(access_token, count, filter)
+        get_mails=lambda access_token, count, filter: get_micosoft_mails(access_token, count, filter),
+        get_thread=lambda access_token, thread_id: get_microsoft_thread(access_token, thread_id)
     )
 }
 
@@ -75,15 +77,13 @@ def get_google_mails(access_token: str, count: int = 25, filter: str = ""):
 
         google_mail_batch_endpoint = "https://www.googleapis.com/batch/gmail/v1"
 
+        # Prepare batch request
         batch_request_boundary = "batch_" + datetime.now().strftime("%Y%m%d%H%M%S") + "_" + uuid.uuid4().hex
-
         batch_request_headers = {
             "Authorization": f"Bearer {access_token}",
             "Content-Type": f"multipart/mixed; boundary={batch_request_boundary}",
         }
-
         batch_request_body = ""
-        # Build batch request body
         for i, message_id in enumerate(message_ids, start=1):
             request_part = (
             f"--{batch_request_boundary}\r\n"
@@ -132,12 +132,11 @@ def get_google_mails(access_token: str, count: int = 25, filter: str = ""):
                 print(f"Batch part failed with status: {status_line}")
                 continue
 
+            # Extract JSON part of the response
             json_part = http_response.split("\r\n\r\n", 1)[1]
-
             msg_data = json.loads(json_part)
 
-
-
+            # Extract headers
             headers = {h['name']: h['value'] for h in msg_data.get('payload', {}).get('headers', [])}
 
             # Extract sender details
@@ -157,7 +156,8 @@ def get_google_mails(access_token: str, count: int = 25, filter: str = ""):
                 },
                 "subject": headers.get("Subject", ""),
                 "bodyPreview": msg_data.get("snippet", ""),
-                "date": parsedate_to_datetime(headers.get("Date", "")).strftime("%d-%m-%Y") if headers.get("Date") else ""
+                "date": parsedate_to_datetime(headers.get("Date", "")).strftime("%d-%m-%Y") if headers.get("Date") else "",
+                "threadId": msg_data.get("threadId")
             })
     except Exception as e:
         print(f"Error processing email part: {e}")
@@ -165,13 +165,48 @@ def get_google_mails(access_token: str, count: int = 25, filter: str = ""):
 
     return mails
 
+def get_gmail_thread(access_token: str, thread_id: str):
+    endpoint = f"https://gmail.googleapis.com/gmail/v1/users/me/threads/{thread_id}"
+    headers = {"Authorization": f"Bearer {access_token}"}
+    res = requests.get(endpoint, headers=headers)
+    res.raise_for_status()
+    data = res.json()
+
+    thread_messages = []
+    for msg in data.get("messages", []):
+        headers = {h['name']: h['value'] for h in msg.get('payload', {}).get('headers', [])}
+
+        from_val = headers.get("From", "")
+        if "<" in from_val:
+            sender_name = from_val.split("<")[0].strip().strip('"')
+            sender_email = from_val.split("<")[1].strip(">")
+        else:
+            sender_name = ""
+            sender_email = from_val.strip()
+
+        received = parsedate_to_datetime(headers.get("Date", ""))
+
+        thread_messages.append({
+            "id": msg.get("id"),
+            "sender": {
+                "name": sender_name,
+                "email": sender_email
+            },
+            "subject": headers.get("Subject", ""),
+            "to": headers.get("To", ""),
+            "date": received.strftime("%d-%m-%Y") if received else "",
+            "time": received.strftime("%I:%M %p") if received else "",
+            "body": msg.get("snippet", ""),
+            "hasAttachment": any(part.get("filename") for part in msg.get("payload", {}).get("parts", []))
+        })
+
+    return thread_messages
+
 def get_microsoft_profile(access_token: str):
     endpoint = "https://graph.microsoft.com/v1.0/me"
     headers = {"Authorization": f"Bearer {access_token}"}
     res = requests.get(endpoint, headers=headers)
     data = res.json()
-
-    print(data)
 
     profile = {
         "name": data.get("displayName", "Unknown"),
@@ -186,7 +221,7 @@ def get_micosoft_mails(access_token: str, count: int = 25, filter: str = ""):
     params = {
         "$top": count,
         "$filter": filter,
-        "$select": "id,subject,bodyPreview,sender,receivedDateTime,hasAttachments"
+        "$select": "id,subject,bodyPreview,sender,receivedDateTime,hasAttachments,conversationId"
     }
 
     res = requests.get(endpoint, headers=headers, params=params)
@@ -204,7 +239,12 @@ def get_micosoft_mails(access_token: str, count: int = 25, filter: str = ""):
             },
             "subject": msg.get("subject", ""),
             "snippet": msg.get("bodyPreview", ""),
-            "date": received.strftime("%d-%m-%Y")
+            "date": received.strftime("%d-%m-%Y"),
+            "threadId": msg.get("conversationId")
         })
 
     return mails
+
+
+def get_microsoft_thread(access_token: str, thread_id: str):
+    return []  # Placeholder for Microsoft thread fetching logic

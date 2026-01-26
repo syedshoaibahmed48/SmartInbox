@@ -1,7 +1,10 @@
+import json
 import redis
 import os
 
-from core.models import TokenDetails
+from core.models import Email, TokenDetails
+
+TTL_SECONDS = 600  # 10 minutes
 
 def create_redis_client() -> redis.Redis:
     try:
@@ -22,12 +25,12 @@ r = create_redis_client()
 
 def is_valid_session(sid: str) -> bool:
     if r.exists(sid) == 1:
-        r.expire(sid, 600, gt=False) # Extend expiry
+        r.expire(sid, TTL_SECONDS, gt=False) # Extend expiry
         return True
     else:
         return False
 
-def store_session(sid: str, token_details: TokenDetails):
+def create_session(sid: str, token_details: TokenDetails):
     try:
         r.hset(sid, mapping={
             "provider": token_details["provider"],
@@ -35,7 +38,7 @@ def store_session(sid: str, token_details: TokenDetails):
             "refresh_token": token_details["refresh_token"],
             "expiry_time": str(token_details["expiry_time"])
         })
-        r.expire(sid, 600)  # 10 minutes
+        r.expire(sid, TTL_SECONDS)
         return True
     except Exception as e:
         raise RuntimeError(f"[Redis] Store session failed: {e}") from e
@@ -60,3 +63,20 @@ def delete_session(sid: str) -> bool:
         return result == 1
     except Exception as e:
         raise RuntimeError(f"[Redis] Delete session failed: {e}") from e
+    
+def save_current_thread(sid: str, thread: str) -> bool:
+    try:
+        r.hset(sid, mapping={
+            "current_thread:": json.dumps(thread)
+        })
+        return True
+    except Exception as e:
+        raise RuntimeError(f"[Redis] Save current thread failed: {e}") from e
+
+def get_current_thread(sid: str) -> str | None:
+    try:
+        thread = r.hget(sid, "current_thread:")
+        r.expire(sid, TTL_SECONDS)
+        return json.loads(thread) if thread else None
+    except Exception as e:
+        raise RuntimeError(f"[Redis] Get current thread failed: {e}") from e

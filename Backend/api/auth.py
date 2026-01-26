@@ -2,7 +2,7 @@ import uuid
 from fastapi import APIRouter, HTTPException, Request
 from pydantic import EmailStr
 from services.sid_utils import encrypt_sid
-from services.redis_client import delete_session, store_session
+from services.redis_client import delete_session, create_session
 from services.oauth_flow import get_access_refresh_tokens, get_sso_url, is_valid_email
 
 router = APIRouter()
@@ -39,7 +39,7 @@ async def exchange_code(request: Request):
         sid = str(uuid.uuid4()) 
 
         # Store session in Redis
-        session = store_session(sid, token_details)
+        session = create_session(sid, token_details)
         if not session:
             raise HTTPException(status_code=500, detail="Failed to store session")
     

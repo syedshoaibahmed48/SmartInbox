@@ -1,10 +1,16 @@
 
-from pydantic import BaseModel, EmailStr, Field
+from pydantic import BaseModel, Field
 from typing import Callable, List, Optional
 
 
 class Email(BaseModel):
-    email: EmailStr = Field(..., description="The email address of the user")
+    id: int = Field(..., description="Unique identifier for the email")
+    sender: dict = Field(..., description="Sender information")
+    to: str = Field(..., description="Recipient email address")
+    date: str = Field(..., description="Date of the email")
+    time: str = Field(..., description="Time of the email")
+    body: str = Field(..., description="Body content of the email")
+    hasAttachment: bool = Field(..., description="Whether the email has an attachment")
 
 class TokenRequestPayload(BaseModel):
     client_id: str = Field(..., description="OAuth client ID")
@@ -24,6 +30,7 @@ class EmailProviderConfig(BaseModel):
     token_request_payload: Callable[[Optional[str]], dict] = Field(..., description="Function to build token request payload (returns TokenRequestPayload)")
     get_profile: Callable[[str], dict] = Field(..., description="Function to get user profile data")
     get_mails: Callable[[str, int, str], dict] = Field(..., description="Function to get user mails")
+    get_thread: Callable[[str, str], dict] = Field(..., description="Function to get a mail thread")
 
 class TokenDetails(BaseModel):
     provider: str = Field(..., description="OAuth provider name")

@@ -29,7 +29,6 @@ export default function MailsPage() {
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState<boolean>(false)
     const [sessionExpired, setSessionExpired] = useState<boolean>(false)
-    const [aiPanelOpen, setAiPanelOpen] = useState(true)
     const [count, setCount] = useState("25")
     const [filterString, setFilterString] = useState("")
     const [filter, setFilter] = useState("")
@@ -130,20 +129,9 @@ export default function MailsPage() {
                         </div>
 
                         {/* Right Section */}
-                        <div className="flex items-center gap-3">
-                            <Button
-                                variant={aiPanelOpen ? "default" : "outline"}
-                                size="sm"
-                                onClick={() => setAiPanelOpen(!aiPanelOpen)}
-                                className={aiPanelOpen ? "bg-gray-900 hover:bg-gray-800 text-white" : "border-gray-200"}
-                            >
-                                <MessageSquare className="w-4 h-4 mr-2" />
-                                AI Assistant
-                                {aiPanelOpen ? <ChevronRight className="w-3 h-3 ml-2" /> : <ChevronLeft className="w-3 h-3 ml-2" />}
-                            </Button>
-
+                        {<div className="flex items-center gap-3">
                             {user && <CurrentUserBadge user={user} />}
-                        </div>
+                        </div>}
                     </div>
                 </div>
             </header>
@@ -160,51 +148,6 @@ export default function MailsPage() {
                         </div>
                     </div>
                 </div>
-
-                {/* AI Sidebar */}
-                {aiPanelOpen && (
-                    <aside className="h-full bg-gray-50 flex flex-col border-l border-gray-200" style={{ width: aiPanelOpen ? '35%' : '0%' }}>
-                        <div className="flex items-center justify-between p-4 border-b border-gray-200 bg-white flex-shrink-0">
-                            <div className="flex items-center gap-3">
-                                <div className="w-6 h-6 bg-gray-900 rounded-md flex items-center justify-center">
-                                    <MessageSquare className="w-3 h-3 text-white" />
-                                </div>
-                                <h2 className="font-medium text-gray-900">AI Assistant</h2>
-                            </div>
-                            <Button variant="ghost" size="sm" onClick={() => setAiPanelOpen(false)} className="h-8 w-8 p-0 hover:bg-gray-100">
-                                <PanelRightClose className="w-4 h-4" />
-                            </Button>
-                        </div>
-                        {/* Scrollable Chat Messages */}
-                        <div className="flex-1 overflow-auto p-4">
-                            <div className="space-y-4">
-                                {sampleChat.map((msg, idx) => (
-                                    <Card
-                                        key={idx}
-                                        className={
-                                            msg.role === 'assistant'
-                                                ? 'bg-white border-gray-200'
-                                                : 'bg-gray-100 border-gray-200 ml-8'
-                                        }
-                                    >
-                                        <CardContent className="p-3">
-                                            <p className="text-sm text-gray-700">{msg.content}</p>
-                                        </CardContent>
-                                    </Card>
-                                ))}
-                            </div>
-                        </div>
-                        {/* Fixed Chat Input */}
-                        <div className="p-4 border-t border-gray-200 bg-white flex-shrink-0">
-                            <div className="flex gap-2 items-center">
-                                <Input placeholder="Ask about your emails..." className="flex-1 border-gray-200" />
-                                <Button size="sm" className="bg-gray-900 hover:bg-gray-800 text-white">
-                                    <Send className="w-4 h-4" />
-                                </Button>
-                            </div>
-                        </div>
-                    </aside>
-                )}
             </div>
         </div>
     )
