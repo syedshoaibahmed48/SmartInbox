@@ -220,14 +220,18 @@ def get_micosoft_mails(access_token: str, count: int = 25, filter: str = ""):
     headers = {"Authorization": f"Bearer {access_token}"}
     params = {
         "$top": count,
-        "$filter": filter,
         "$select": "id,subject,bodyPreview,sender,receivedDateTime,hasAttachments,conversationId"
     }
+
+    # Add search filter if provided, api returns error for empty $search
+    if filter:
+        params["$search"] = filter
 
     res = requests.get(endpoint, headers=headers, params=params)
     res.raise_for_status()
     data = res.json().get("value", [])
 
+    # Format mails
     mails = []
     for msg in data:
         received = datetime.strptime(msg["receivedDateTime"], "%Y-%m-%dT%H:%M:%SZ")
@@ -238,7 +242,7 @@ def get_micosoft_mails(access_token: str, count: int = 25, filter: str = ""):
                 "email": msg.get("sender", {}).get("emailAddress", {}).get("address", ""),
             },
             "subject": msg.get("subject", ""),
-            "snippet": msg.get("bodyPreview", ""),
+            "bodyPreview": msg.get("bodyPreview", ""),
             "date": received.strftime("%d-%m-%Y"),
             "threadId": msg.get("conversationId")
         })

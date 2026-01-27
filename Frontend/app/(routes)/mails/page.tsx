@@ -1,21 +1,10 @@
 "use client"
 
-import { useState, useEffect, useRef } from "react"
+import { useState, useEffect, useRef, use } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Card, CardContent } from "@/components/ui/card"
-import {
-    Mail,
-    Search,
-    MessageSquare,
-    Send,
-    ChevronRight,
-    ChevronLeft,
-    PanelRightClose,
-    AlertCircle
-} from "lucide-react"
+import { Filter, Mail, Search, X } from "lucide-react"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import sampleChat from "@/public/sample-chat.json"
 import { CurrentUser, Email } from "@/lib/types"
 import EmailCard from "@/components/EmailCard"
 import CurrentUserBadge from "@/components/CurrentUserBadge"
@@ -23,22 +12,46 @@ import { apiClient } from "@/lib/apiClient"
 import SomethingWentWrong from "@/components/SomethingWentWrong"
 import LoadingMails from "@/components/LoadingMails"
 import SessionExpired from "@/components/SessionExpiredError"
-
+import { useRouter, useSearchParams } from "next/navigation"
 
 export default function MailsPage() {
+
+    // Extract URL parameters
+    const searchParams = useSearchParams();
+    const router = useRouter();
+    const urlFilter = searchParams.get('filter') || "";
+    const urlCount = searchParams.get('count') || "25";
+
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState<boolean>(false)
     const [sessionExpired, setSessionExpired] = useState<boolean>(false)
-    const [count, setCount] = useState("25")
-    const [filterString, setFilterString] = useState("")
-    const [filter, setFilter] = useState("")
+    const [count, setCount] = useState(urlCount)
+    const [filter, setFilter] = useState(urlFilter)
     const [user, setUser] = useState<CurrentUser>({ name: "", email: "" })
     const [emails, setEmails] = useState<Email[]>([])
 
-    async function fetchEmailsAndUserData() {
+    const filtersChanged = filter !== urlFilter || count !== urlCount
+    const hasActiveFilters = urlFilter !== "" || urlCount !== "25"
+
+    function applyFilters() {
+        const params = new URLSearchParams();
+        if (filter) params.append('filter', filter);
+        if (count) params.append('count', count);
+        router.push(`/mails?${params.toString()}`);
+        fetchEmailsAndUserData(filter, count);
+    }
+
+    function clearFilter() {
+        setFilter("");
+        setCount("25");
+        router.push(`/mails`);
+        fetchEmailsAndUserData("", "25");
+    }
+
+    async function fetchEmailsAndUserData(filterParam?: string, countParam?: string) {
         setLoading(true);
         try {
-            const res = await apiClient(`/api/mails?count=${count}&filter=${filter}`, { method: "GET" }, true);
+            const res = await apiClient(`/api/mails?count=${countParam}&filter=${filterParam}`, { method: "GET" }, true);
             const { user, mails } = res;
             setUser(user);
             setEmails(mails);
@@ -46,13 +59,13 @@ export default function MailsPage() {
         } catch (err: any) {
             if (err.status === 440) setSessionExpired(true);
             else setError(true)
-            setLoading(false) 
+            setLoading(false)
         }
     }
 
     useEffect(() => {
-        fetchEmailsAndUserData();
-    }, [filter, count])
+        fetchEmailsAndUserData(filter, count);
+    }, [])
 
     // Loading State
     if (loading) return <LoadingMails />
@@ -88,28 +101,14 @@ export default function MailsPage() {
                                     type="text"
                                     placeholder="Search emails..."
                                     className="pl-10 pr-10 bg-gray-50 border-gray-200 focus:bg-white"
-                                    value={filterString}
-                                    onChange={(e) => setFilterString(e.target.value)}
+                                    value={filter}
+                                    onChange={(e) => setFilter(e.target.value)}
                                     onKeyDown={(e) => {
-                                        if ((e as React.KeyboardEvent<HTMLInputElement>).key === 'Enter') setFilter(filterString);
+                                        if (e.key === "Enter" && filtersChanged) {
+                                            applyFilters();
+                                        }
                                     }}
                                 />
-
-                                {filter.length > 0 && (
-                                    <div className="absolute right-2 top-1/2 transform -translate-y-1/2">
-                                        <Button
-                                            variant="ghost"
-                                            size="sm"
-                                            onClick={() => {
-                                                setFilter("");
-                                                setFilterString("");
-                                            }}
-                                            className="text-sm text-red-600"
-                                        >
-                                            Clear
-                                        </Button>
-                                    </div>
-                                )}
                             </div>
 
                             <div className="flex items-center gap-2">
@@ -126,6 +125,29 @@ export default function MailsPage() {
                                     </SelectContent>
                                 </Select>
                             </div>
+
+                            <Button
+                                variant="outline"
+                                size="sm"
+                                className="border-gray-200 bg-transparent disabled:opacity-50"
+                                disabled={!filtersChanged}
+                                onClick={applyFilters}
+                            >
+                                <Filter className="w-4 h-4 mr-2" />
+                                Filter
+                            </Button>
+
+                            {hasActiveFilters && (
+                                <Button
+                                    variant="outline"
+                                    size="sm"
+                                    className="border-gray-200 bg-transparent text-red-600 hover:text-red-700 hover:bg-red-50"
+                                    onClick={clearFilter}
+                                >
+                                    <X className="w-4 h-4 mr-2" />
+                                    Clear
+                                </Button>
+                            )}
                         </div>
 
                         {/* Right Section */}

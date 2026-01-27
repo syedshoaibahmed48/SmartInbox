@@ -72,7 +72,7 @@ export default function MailThreadPage() {
               <Button
                 variant="ghost"
                 size="sm"
-                onClick={() => router.push("/mails")}
+                onClick={() => router.back()}
                 className="hover:bg-gray-100"
               >
                 <ArrowLeft className="w-4 h-4 mr-2" />

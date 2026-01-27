@@ -5,10 +5,9 @@ Securely interact with your emails through a simple AI chat interface.
 ---
 
 ## Overview
-Smart Inbox reads your emails and provides an interactive chat interface where you can:
+Smart Inbox displays your emails and provides an interactive chat interface where you can:
 - Ask questions about your inbox.
 - Summarize messages.
-- Search or filter conversations.
 - Interact with your email data privately and securely.
 
 ---

@@ -30,7 +30,7 @@ export default function EmailCard({ email }: { email: Email }) {
               <h4 className="text-base font-medium text-gray-900 truncate flex-1">{email.subject}</h4>
             </div>
             {/* Body Preview */}
-            <p className="text-sm text-gray-600 line-clamp-2 leading-relaxed">{email.bodyPreview}</p>
+            <p className="text-sm text-gray-600 line-clamp-1 leading-relaxed">{email.bodyPreview}</p>
           </div>
         </CardContent>
       </Card>

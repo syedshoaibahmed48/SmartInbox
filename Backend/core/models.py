@@ -4,13 +4,16 @@ from typing import Callable, List, Optional
 
 
 class Email(BaseModel):
-    id: int = Field(..., description="Unique identifier for the email")
+    id: str = Field(..., description="Unique identifier for the email")
     sender: dict = Field(..., description="Sender information")
-    to: str = Field(..., description="Recipient email address")
+    to: Optional[str] = Field(None, description="Recipient email address")
+    subject: str = Field(..., description="Subject of the email")
     date: str = Field(..., description="Date of the email")
-    time: str = Field(..., description="Time of the email")
-    body: str = Field(..., description="Body content of the email")
-    hasAttachment: bool = Field(..., description="Whether the email has an attachment")
+    time: Optional[str] = Field(None, description="Time of the email")
+    bodyPreview: Optional[str] = Field(None, description="Preview text of the email body")
+    body: Optional[str] = Field(None, description="Body content of the email")
+    hasAttachment: Optional[bool] = Field(None, description="Whether the email has an attachment")
+    threadId: str = Field(None, description="Thread ID of the email")
 
 class TokenRequestPayload(BaseModel):
     client_id: str = Field(..., description="OAuth client ID")
