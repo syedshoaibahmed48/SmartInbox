@@ -5,5 +5,5 @@ WORKDIR /app
 
 EXPOSE 8080
 
-# Download and start the Gemma 3.4B model from Hugging Face
-CMD ["-hf", "ggml-org/gemma-3-4b-it-GGUF", "--host", "0.0.0.0", "--port", "8080"]
+# Download and start the Quantized Qwen2.5-VL-3B-Instruct model from Hugging Face
+CMD [ "-hf", "ggml-org/Qwen2.5-VL-3B-Instruct-GGUF:q4_k_m", "--host", "0.0.0.0", "--port", "8080" ]
